@@ -152,6 +152,109 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-基于Mac OS系统搭建51单片机开发环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="基于Mac-OS系统搭建51单片机开发环境"><a href="#基于Mac-OS系统搭建51单片机开发环境" class="headerlink" title="基于Mac OS系统搭建51单片机开发环境"></a>基于Mac OS系统搭建51单片机开发环境</h1><h4 id=""><a href="#" class="headerlink" title=""></a></h4><h3 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h3><p>  本人是杭电计科学生，参加的智能小车队伍平时需要大量基于单片机的操作，目前使用的是MBP（冤种mac），网上大多又是基于Windows系统等开发方式，查阅了许多文章并结合他人方法总结记录下来，为以后回顾记忆。</p>
+<h2 id="一、安装homebrew"><a href="#一、安装homebrew" class="headerlink" title="一、安装homebrew"></a>一、安装homebrew</h2><p>​	因为后续编译器sdcc得使用brew来安装，所以得先配置好homebrew</p>
+<pre><code> 国内不用翻墙的下载地址（在Mac终端输入命令行）
+</code></pre>
+<figure class="highlight plaintext"><figcaption><span>c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、安装编译器sdcc"><a href="#二、安装编译器sdcc" class="headerlink" title="二、安装编译器sdcc"></a>二、安装编译器sdcc</h2><p>​	sdcc可直接通过brew在终端内直接安装	</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install sdcc</span><br></pre></td></tr></table></figure>
+
+<p>　然后在终端中输入来检验</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdcc -version</span><br></pre></td></tr></table></figure>
+
+<p>​	出现以下情况说明安装成功</p>
+<p>![截屏2022-09-06 下午12.26.03](&#x2F;Users&#x2F;chenjiahan&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;截屏2022-09-06 下午12.26.03.png)</p>
+<h2 id="三、安装CH341驱动"><a href="#三、安装CH341驱动" class="headerlink" title="三、安装CH341驱动"></a>三、安装CH341驱动</h2><p>​	为让开发版上的USB转串口模块成功连接到Mac上，我们需要CH341驱动来为Mac系统驱动</p>
+<p>​	下载地址：<a target="_blank" rel="noopener" href="http://www.wch.cn/download/CH341SER_MAC_ZIP.html">http://www.wch.cn/download/CH341SER_MAC_ZIP.html</a></p>
+<p>​	下载好后将文件解压双击.pkg结尾的文件开始安装，一直点下一步即可完成安装</p>
+<p>​	接下来将单片机连接到Mac上（我使用的是STC89型号的），输入一下命令来检验驱动是否安装成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /dev/tty.wchusbser*</span><br></pre></td></tr></table></figure>
+
+<p>​	如果输出一下数据，说明驱动成功</p>
+<p>![截屏2022-09-06 下午12.34.41](&#x2F;Users&#x2F;chenjiahan&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;截屏2022-09-06 下午12.34.41.png)</p>
+<p>注意⚠️：其中140代表串口号</p>
+<h2 id="四、安装烧录程序stcgal"><a href="#四、安装烧录程序stcgal" class="headerlink" title="四、安装烧录程序stcgal"></a>四、安装烧录程序stcgal</h2><p>​	stcgal 是 STC 单片机的下载工具，安装前需确保已提前安装好 python3，因为我的电脑已经安装好了，就不多赘述了。安装完成后再终端输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python</span><br></pre></td></tr></table></figure>
+
+<p>![截屏2022-09-06 下午12.40.08](&#x2F;Users&#x2F;chenjiahan&#x2F;Desktop&#x2F;截屏2022-09-06 下午12.40.08.png)</p>
+<p>出现以上情况说明安装成功</p>
+<p>下载stcgal地址： <a target="_blank" rel="noopener" href="https://github.com/grigorig/stcgal">https://github.com/grigorig/stcgal</a></p>
+<p>![截屏2022-09-06 下午12.43.49](&#x2F;Users&#x2F;chenjiahan&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;截屏2022-09-06 下午12.43.49.png)</p>
+<p>​	直接下载源码，解压文件即可，再在终端中cd命令进入解压文件夹（一直按tab键来补全路经）</p>
+<p>输入以下两行代码即可安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./setup.py build</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./setup.py install</span><br></pre></td></tr></table></figure>
+
+<p>​	再输入代码进行检验stcgal版本信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stcgal -version</span><br></pre></td></tr></table></figure>
+
+<p>​	到这里，关于STC单片机在macos上的总体环境已配置完成，开发环境搭建成功！接下来就是进行简单的调试</p>
+<h2 id="五、调试单片机"><a href="#五、调试单片机" class="headerlink" title="五、调试单片机"></a>五、调试单片机</h2><h4 id="1-输入代码"><a href="#1-输入代码" class="headerlink" title="1.输入代码"></a>1.输入代码</h4><h5 id="在编译器上输入以下代码来用数码管点亮SSPAL（编译器我使用的是CLion），将代码以main-c的保存在桌面上"><a href="#在编译器上输入以下代码来用数码管点亮SSPAL（编译器我使用的是CLion），将代码以main-c的保存在桌面上" class="headerlink" title="在编译器上输入以下代码来用数码管点亮SSPAL（编译器我使用的是CLion），将代码以main.c的保存在桌面上"></a>在编译器上输入以下代码来用数码管点亮SSPAL（编译器我使用的是CLion），将代码以main.c的保存在桌面上</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;8051.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> Table[] = &#123;<span class="number">0x6D</span>,<span class="number">0x73</span>,<span class="number">0x77</span>,<span class="number">0x30</span>&#125;; <span class="comment">//对应SPAI四个字母</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Delay</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> x)</span>		<span class="comment">//@11.0592MHz下延迟1ms</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">char</span> i, j;</span><br><span class="line">	<span class="keyword">while</span>(x--)</span><br><span class="line">	&#123;</span><br><span class="line">		i = <span class="number">2</span>;</span><br><span class="line">		j = <span class="number">199</span>;</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span> (--j);</span><br><span class="line">		&#125; <span class="keyword">while</span> (--i);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Turn_ON</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> Location ,<span class="type">unsigned</span> <span class="type">int</span> Num1)</span>  <span class="comment">//点亮</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span>(Location) <span class="comment">//片选</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:P2_4=<span class="number">1</span>;P2_3=<span class="number">1</span>;P2_2=<span class="number">1</span>;<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:P2_4=<span class="number">1</span>;P2_3=<span class="number">1</span>;P2_2=<span class="number">0</span>;<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:P2_4=<span class="number">1</span>;P2_3=<span class="number">0</span>;P2_2=<span class="number">1</span>;<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:P2_4=<span class="number">1</span>;P2_3=<span class="number">0</span>;P2_2=<span class="number">0</span>;<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:P2_4=<span class="number">0</span>;P2_3=<span class="number">1</span>;P2_2=<span class="number">1</span>;<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">6</span>:P2_4=<span class="number">0</span>;P2_3=<span class="number">1</span>;P2_2=<span class="number">0</span>;<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">7</span>:P2_4=<span class="number">0</span>;P2_3=<span class="number">0</span>;P2_2=<span class="number">1</span>;<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">8</span>:P2_4=<span class="number">0</span>;P2_3=<span class="number">0</span>;P2_2=<span class="number">0</span>;<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	P0=Table[Num1]; <span class="comment">//段选</span></span><br><span class="line">	Delay(<span class="number">1</span>);</span><br><span class="line">	P0=<span class="number">0x00</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span> <span class="comment">//主函数</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		Turn_ON(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">		Turn_ON(<span class="number">2</span>,<span class="number">0</span>);</span><br><span class="line">		Turn_ON(<span class="number">3</span>,<span class="number">1</span>);</span><br><span class="line">		Turn_ON(<span class="number">4</span>,<span class="number">2</span>);</span><br><span class="line">		Turn_ON(<span class="number">5</span>,<span class="number">3</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-使用sdcc进行编译"><a href="#2-使用sdcc进行编译" class="headerlink" title="2.使用sdcc进行编译"></a>2.使用sdcc进行编译</h4><p>​	使用终端进入到代码的所在目录下，输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdcc main.c</span><br></pre></td></tr></table></figure>
+
+<p>​	就可以发现文件夹中多出了一系列文件</p>
+<p>![截屏2022-09-06 下午12.56.23](&#x2F;Users&#x2F;chenjiahan&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;截屏2022-09-06 下午12.56.23.png)</p>
+<h4 id="3-使用stcgal将代码烧录入单片机中"><a href="#3-使用stcgal将代码烧录入单片机中" class="headerlink" title="3.使用stcgal将代码烧录入单片机中"></a>3.使用stcgal将代码烧录入单片机中</h4><p>​	输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stcgal -P stc89 -p /dev/tty.wchusbserial140</span><br></pre></td></tr></table></figure>
+
+<p>​	-P后参数表示单片机型号，例如我的是STC89，-p后参数表示单片机串口号</p>
+<p>![截屏2022-09-06 下午1.01.02](&#x2F;Users&#x2F;chenjiahan&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;截屏2022-09-06 下午1.01.02.png)</p>
+<p>​	注意⚠️：在执行stcgal命令，需要给单片机断电再重新接电才能完成写入过程</p>
+<h4 id="4-点亮了单片机上的SSPAL！"><a href="#4-点亮了单片机上的SSPAL！" class="headerlink" title="4.点亮了单片机上的SSPAL！"></a>4.点亮了单片机上的SSPAL！</h4><p><img src="/Users/chenjiahan/Desktop/WechatIMG2.jpeg" alt="WechatIMG2"></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>​	建议别买mac，我总共查阅了三天资料，试用了各种各样的方法，最终才找到了一种可行方案，哎！</p>
+<p>​                                                                                                                                                                       作者：IceMan</p>
+<h3 id="お疲れ様でした"><a href="#お疲れ様でした" class="headerlink" title="お疲れ様でした"></a><strong>お疲れ様でした</strong></h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/09/06/%E5%9F%BA%E4%BA%8EMac%20OS%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA51%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-my-first-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
