@@ -152,7 +152,7 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-基于Mac OS系统搭建51单片机开发环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-基于Mac OS系统搭建51单片机开发环境/基于Mac OS系统搭建51单片机开发环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
@@ -169,7 +169,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdcc -version</span><br></pre></td></tr></table></figure>
 
 <p>​	出现以下情况说明安装成功</p>
-<p>![截屏2022-09-06 下午1.45.40](&#x2F;Users&#x2F;chenjiahan&#x2F;Desktop&#x2F;截屏2022-09-06 下午1.45.40.png)</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5wux6443tj21860c60v1.jpg" alt="截屏2022-09-06 下午2.13.53"></p>
 <h2 id="三、安装CH341驱动"><a href="#三、安装CH341驱动" class="headerlink" title="三、安装CH341驱动"></a>三、安装CH341驱动</h2><p>​	为让开发版上的USB转串口模块成功连接到Mac上，我们需要CH341驱动来为Mac系统驱动</p>
 <p>​	下载地址：<a target="_blank" rel="noopener" href="http://www.wch.cn/download/CH341SER_MAC_ZIP.html">http://www.wch.cn/download/CH341SER_MAC_ZIP.html</a></p>
 <p>​	下载好后将文件解压双击.pkg结尾的文件开始安装，一直点下一步即可完成安装</p>
@@ -177,15 +177,15 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /dev/tty.wchusbser*</span><br></pre></td></tr></table></figure>
 
 <p>​	如果输出一下数据，说明驱动成功</p>
-<p>![截屏2022-09-06 下午1.45.14](&#x2F;Users&#x2F;chenjiahan&#x2F;Desktop&#x2F;截屏2022-09-06 下午1.45.14.png)</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5wuy2cr5ij218205uwf5.jpg" alt="截屏2022-09-06 下午2.14.53"></p>
 <p>​	注意⚠️：其中140代表串口号</p>
 <h2 id="四、安装烧录程序stcgal"><a href="#四、安装烧录程序stcgal" class="headerlink" title="四、安装烧录程序stcgal"></a>四、安装烧录程序stcgal</h2><p>​	stcgal 是 STC 单片机的下载工具，安装前需确保已提前安装好 python3，因为我的电脑已经安装好了，就不多赘述了。安装完成后再终端输入</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python</span><br></pre></td></tr></table></figure>
 
-<p>![截屏2022-09-06 下午1.44.38](&#x2F;Users&#x2F;chenjiahan&#x2F;Desktop&#x2F;截屏2022-09-06 下午1.44.38.png)</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5wuymzc4uj21880ggq5r.jpg" alt="截屏2022-09-06 下午2.15.24"></p>
 <p>出现以上情况说明安装成功</p>
 <p>下载stcgal地址： <a target="_blank" rel="noopener" href="https://github.com/grigorig/stcgal">https://github.com/grigorig/stcgal</a></p>
-<p>![截屏2022-09-06 下午1.44.16](&#x2F;Users&#x2F;chenjiahan&#x2F;Desktop&#x2F;截屏2022-09-06 下午1.44.16.png)</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5wuz0mvgtj21820pmq73.jpg" alt="截屏2022-09-06 下午2.15.49"></p>
 <p>​	直接下载源码，解压文件即可，再在终端中cd命令进入解压文件夹（一直按tab键来补全路经）</p>
 <p>输入以下两行代码即可安装</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./setup.py build</span><br></pre></td></tr></table></figure>
@@ -207,9 +207,9 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stcgal -P stc89 -p /dev/tty.wchusbserial140</span><br></pre></td></tr></table></figure>
 
 <p>​	-P后参数表示单片机型号，例如我的是STC89，-p后参数表示单片机串口号</p>
-<p>![截屏2022-09-06 下午1.42.38](&#x2F;Users&#x2F;chenjiahan&#x2F;Desktop&#x2F;截屏2022-09-06 下午1.42.38.png)</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5wuziv2oqj21880qiwi8.jpg" alt="截屏2022-09-06 下午2.16.18"></p>
 <p>​	注意⚠️：在执行stcgal命令，需要给单片机断电再重新接电才能完成写入过程</p>
-<h4 id="4-点亮了单片机上的SSPAL！"><a href="#4-点亮了单片机上的SSPAL！" class="headerlink" title="4.点亮了单片机上的SSPAL！"></a>4.点亮了单片机上的SSPAL！</h4><p><img src="/Users/chenjiahan/Desktop/WechatIMG2.jpeg" alt="WechatIMG2"></p>
+<h4 id="4-点亮了单片机上的SSPAL！"><a href="#4-点亮了单片机上的SSPAL！" class="headerlink" title="4.点亮了单片机上的SSPAL！"></a>4.点亮了单片机上的SSPAL！</h4><p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5wv00xov8j20u0140akz.jpg" alt="WechatIMG2"></p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>​	建议别买mac，我总共查阅了三天资料，试用了各种各样的方法，最终才找到了一种可行方案，哎！</p>
 <p>​                                                                                                                                                                       作者：IceMan</p>
 <h3 id="お疲れ様でした"><a href="#お疲れ様でした" class="headerlink" title="お疲れ様でした"></a><strong>お疲れ様でした</strong></h3>
@@ -224,7 +224,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/06/%E5%9F%BA%E4%BA%8EMac%20OS%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA51%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/09/06/%E5%9F%BA%E4%BA%8EMac%20OS%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA51%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/%E5%9F%BA%E4%BA%8EMac%20OS%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA51%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">展开全文 >></a>
         </p>
       
 
