@@ -6,31 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>基于Arduino的智能小车开发 | Hexo</title>
+  <title>Arduino开发初识 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基于Arduino的智能小车开发一、Arduino介绍​	Arduino是一款便捷灵活，方便上手的开源电子原型平台。Arduino电路板学习成本更低，并有专门的网站和IDE支持，对于短期上手的同学来说，会比STM32板好上手很多。搭载Arduino板子的小车也是市面上较为常见的，具有循迹、避障、超声波红外等基础功能，所以适合新手入坑智能车。 Arduino作为开源的项目，所以网上就有许多不一样的版">
+  <meta name="description" content="Arduino开发初识首先声明：我也只是一个专业性不强的小白，仅是记录一些我所了解的东西，所以所说的并不一定完全正确（卑微） 1.了解Arduino语言逻辑创建一个空的Arduino文件，我们可以看到整一个页面就两行函数： setup()与loop()函数  setup函数我理解为初始化定义，即在最开始定义板子的IO口，以及一些端口的设置 loop函数里放的才是你真正想要Arduino板子完成的任">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于Arduino的智能小车开发">
-<meta property="og:url" content="http://example.com/2022/09/19/%E5%9F%BA%E4%BA%8EArduino%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:title" content="Arduino开发初识">
+<meta property="og:url" content="http://example.com/2022/09/19/Arduino%E5%BC%80%E5%8F%91%E5%88%9D%E8%AF%86/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="基于Arduino的智能小车开发一、Arduino介绍​	Arduino是一款便捷灵活，方便上手的开源电子原型平台。Arduino电路板学习成本更低，并有专门的网站和IDE支持，对于短期上手的同学来说，会比STM32板好上手很多。搭载Arduino板子的小车也是市面上较为常见的，具有循迹、避障、超声波红外等基础功能，所以适合新手入坑智能车。 Arduino作为开源的项目，所以网上就有许多不一样的版">
+<meta property="og:description" content="Arduino开发初识首先声明：我也只是一个专业性不强的小白，仅是记录一些我所了解的东西，所以所说的并不一定完全正确（卑微） 1.了解Arduino语言逻辑创建一个空的Arduino文件，我们可以看到整一个页面就两行函数： setup()与loop()函数  setup函数我理解为初始化定义，即在最开始定义板子的IO口，以及一些端口的设置 loop函数里放的才是你真正想要Arduino板子完成的任">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h69hrirm4sj20u0140wlt.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h69huuid3kj21fh0u0wk0.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c4nrk5pwj20rs14440k.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c4iui5nij21030u0tca.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c4zn63d1j21760u078b.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c4xopewzj20ja0lumzd.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c5070z8gj20sa0ym42a.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c51mxljxj21au06q3zd.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c54olhh3j21a70u00v0.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c56eacgpj21a70u0ac2.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c59ccngvj21a70u0t8z.jpg">
-<meta property="article:published_time" content="2022-09-19T11:38:19.691Z">
-<meta property="article:modified_time" content="2022-09-19T11:40:41.178Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24egy1h6c5xfbsjbj21a70u0abx.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24egy1h6c620o6quj20j60d9dim.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24egy1h6c6mrh73jj21hc0u0qcn.jpg">
+<meta property="article:published_time" content="2022-09-19T13:15:27.786Z">
+<meta property="article:modified_time" content="2022-09-19T13:16:14.658Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/e6c9d24ely1h69hrirm4sj20u0140wlt.jpg">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/e6c9d24egy1h6c5xfbsjbj21a70u0abx.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -166,55 +158,59 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-基于Arduino的智能小车开发" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Arduino开发初识" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      基于Arduino的智能小车开发
+      Arduino开发初识
     </h1>
   
 
         
-        <a href="/2022/09/19/%E5%9F%BA%E4%BA%8EArduino%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6%E5%BC%80%E5%8F%91/" class="archive-article-date">
-  	<time datetime="2022-09-19T11:38:19.691Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-19</time>
+        <a href="/2022/09/19/Arduino%E5%BC%80%E5%8F%91%E5%88%9D%E8%AF%86/" class="archive-article-date">
+  	<time datetime="2022-09-19T13:15:27.786Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="基于Arduino的智能小车开发"><a href="#基于Arduino的智能小车开发" class="headerlink" title="基于Arduino的智能小车开发"></a>基于Arduino的智能小车开发</h1><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="一、Arduino介绍"><a href="#一、Arduino介绍" class="headerlink" title="一、Arduino介绍"></a>一、Arduino介绍</h3><p>​	Arduino是一款便捷灵活，方便上手的开源电子原型平台。Arduino电路板学习成本更低，并有专门的网站和IDE支持，对于短期上手的同学来说，会比STM32板好上手很多。搭载Arduino板子的小车也是市面上较为常见的，具有循迹、避障、超声波红外等基础功能，所以适合新手入坑智能车。</p>
-<p>Arduino作为开源的项目，所以网上就有许多不一样的版本，一般国产的板子价格会便宜很多，且功能基本齐全，而官方生产的板子价格较贵，但相关的学习资料会比较丰富，可以根据个人选择选购合适的板子</p>
-<h3 id="二、Mac下Arduino开发环境搭建"><a href="#二、Mac下Arduino开发环境搭建" class="headerlink" title="二、Mac下Arduino开发环境搭建"></a>二、Mac下Arduino开发环境搭建</h3><p>​	本人的电脑是MacBook Pro M1，系统版本为MacOS 12.2.1，入手的开发版是Arduino Uno，以下是开发环境搭建的全过程</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h69hrirm4sj20u0140wlt.jpg" alt="WechatIMG13"></p>
-<h3 id="1-安装驱动"><a href="#1-安装驱动" class="headerlink" title="1.安装驱动"></a>1.安装驱动</h3><p>为了能让电脑识别开发版的借口，需要根据板子的种类来安装相应的驱动</p>
-<p>我选择的是CH34X系列的接口，一般CH341，CH340都可很好的适配</p>
-<p>下载链接为： </p>
-<p>[<a target="_blank" rel="noopener" href="https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver]">https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver]</a>: </p>
-<h3 id="2-安装Arduino-IDE"><a href="#2-安装Arduino-IDE" class="headerlink" title="2.安装Arduino IDE"></a>2.安装Arduino IDE</h3><p>​	Arduino官方就提供了开发Arduino开发板的IDE，并且拥有完整的社区进行学习讨论，<a target="_blank" rel="noopener" href="https://www.arduino.cc/en/software">https://www.arduino.cc/en/software</a></p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h69huuid3kj21fh0u0wk0.jpg" alt="截屏2022-09-17 下午12.34.13"></p>
-<p>选择自己电脑的型号尽心下载，下载完成后IDE界面如下</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c4nrk5pwj20rs14440k.jpg" alt="IMG_70690EACD129-1"></p>
-<h3 id="3-连接Arduino开发板"><a href="#3-连接Arduino开发板" class="headerlink" title="3.连接Arduino开发板"></a>3.连接Arduino开发板</h3><p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c4iui5nij21030u0tca.jpg" alt="截屏2022-09-19 下午6.58.32"></p>
-<p>将你的开发板连接到电脑上，再打开Arduino顶部菜单栏的工具界面，选择自己相应的<strong>开发板</strong>，在选择<strong>端口</strong>，如果连接成功，点击下方<strong>取得开发板信息</strong>就会显示开发板的当前信息。</p>
-<h3 id="4-抛弃Arduino选择拥抱VScode"><a href="#4-抛弃Arduino选择拥抱VScode" class="headerlink" title="4.抛弃Arduino选择拥抱VScode"></a>4.抛弃Arduino选择拥抱VScode</h3><p>前面说到Arduino IDE的开发界面极为简洁，这对开发者并不是很友好，这意味着Arduino并没有自动补全，甚至提示报错的功能，经常会因为一个错误而寻找半天，所以我们选择将Arduino移植到VScode上进行开发（⚠️：前提是你已经安装好了Arduino IDE）</p>
-<p>首先需要设置Arduino，完成下面的勾选</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c4zn63d1j21760u078b.jpg" alt="1ce8d16fbaf04aa896c87cc2d9728046"></p>
-<p>然后再打开vs code界面，选择安装插件，首先需要安装Arduino插件</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c4xopewzj20ja0lumzd.jpg" alt="045a6cac52164430a51c20ca646f5cd4"></p>
-<p>再选择插件的扩展设置<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c5070z8gj20sa0ym42a.jpg" alt="2cd65703d2514886a56bae0459136d70"></p>
-<p>在这里设置自己Arduino的路经，如果是默认则无需填写</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c51mxljxj21au06q3zd.jpg" alt="bb714352bb334b86ac0986c29fb25f4b"></p>
-<p>这样就完成了Arduino在VS code上的设置</p>
-<h3 id="5-在VScode上创建一个新的Arduino文件"><a href="#5-在VScode上创建一个新的Arduino文件" class="headerlink" title="5.在VScode上创建一个新的Arduino文件"></a>5.在VScode上创建一个新的Arduino文件</h3><p>打开一个新的文件夹，按住shift+command+P呼出面板，选择Arduino：Initialize</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c54olhh3j21a70u00v0.jpg" alt="截屏2022-09-19 下午7.30.17"></p>
-<p>再输入自己的文件名，选择自己的开发板<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c56eacgpj21a70u0ac2.jpg" alt="截屏2022-09-19 下午7.32.16"></p>
-<p>这样就大功告成了，现在你就可以在vs code上开心地进行Arduino的开发了<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c59ccngvj21a70u0t8z.jpg" alt="截屏2022-09-19 下午7.33.24"></p>
-<p>最下面的一排参数是你开发版的信息，一般当你开发板正确连接到电脑上时，系统会自动识别连接，当然也可以选择手动选择。</p>
-<h2 id="読んでくれてありがとう"><a href="#読んでくれてありがとう" class="headerlink" title="読んでくれてありがとう"></a><em>読んでくれてありがとう</em></h2><p>​                                                                                                       编辑者：Ice Man</p>
+        <h1 id="Arduino开发初识"><a href="#Arduino开发初识" class="headerlink" title="Arduino开发初识"></a>Arduino开发初识</h1><p><strong>首先声明：我也只是一个专业性不强的小白，仅是记录一些我所了解的东西，所以所说的并不一定完全正确（卑微）</strong></p>
+<h3 id="1-了解Arduino语言逻辑"><a href="#1-了解Arduino语言逻辑" class="headerlink" title="1.了解Arduino语言逻辑"></a>1.了解Arduino语言逻辑</h3><p>创建一个空的Arduino文件，我们可以看到整一个页面就两行函数： setup()与loop()函数</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h6c5xfbsjbj21a70u0abx.jpg" alt="截屏2022-09-19 下午7.58.18"></p>
+<p>setup函数我理解为初始化定义，即在最开始定义板子的IO口，以及一些端口的设置</p>
+<p>loop函数里放的才是你真正想要Arduino板子完成的任务，并且loop函数里的内容是一直循环下去，在loop函数里你可以调用其他void函数来实现操作</p>
+<p>Arduino是基于C++语言进行开发的，所以这要求你有一定的C++语言基础，但并不会涉及很复杂的语法，所以只需要了解最基本的C++语言即可，例如函数方法调用，判断，循环，定义语句等基础即可</p>
+<h3 id="2-了解Arduino开发板"><a href="#2-了解Arduino开发板" class="headerlink" title="2.了解Arduino开发板"></a>2.了解Arduino开发板</h3><p>以下就是一块Arduino UNO的开发板，Arduino UNO(R3版本) 采用的微处理器是ATmega328. 该版本包括１４个数字输入输出IO,６个模拟输入IO,１６ＭＨＺ的晶体，USB接口，电源接口，烧录头，复位按钮等</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h6c620o6quj20j60d9dim.jpg" alt="v2-fa59cd9d15becb2a3ba02817ec09395b_1440w"></p>
+<p>如果是初学者，并不需要特别清楚的了解Arduino内部的电路构造（其实我也不知道），只要能够运用Arduino上的几个IO口即可</p>
+<h3 id="3-测试一个简单的程序"><a href="#3-测试一个简单的程序" class="headerlink" title="3.测试一个简单的程序"></a>3.测试一个简单的程序</h3><p>接下来就来运行一个最简单的点亮LED灯的代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">setup</span><span class="params">()</span> <span class="comment">//初始化设置</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">pinMode</span>(LED_BUILTIN,OUTPUT);  <span class="comment">//设置LED开</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">loop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">digitalWrite</span>(LED_BUILTIN,HIGH); <span class="comment">//让LED灯输出高电平</span></span><br><span class="line">  <span class="built_in">delay</span>(<span class="number">100</span>); <span class="comment">//暂停100ms</span></span><br><span class="line">  <span class="built_in">digitalWrite</span>(LED_BUILTIN,LOW);  <span class="comment">//让LED灯输出低电平</span></span><br><span class="line">  <span class="built_in">delay</span>(<span class="number">100</span>); <span class="comment">//暂停100ms</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>vscode右上角有两个图标，一个是检验，一个是上传，将代码烧录至Arduino中，我们就得到了一个LED灯闪烁的效果</p>
+<h3 id="4-来一个复杂点的程序"><a href="#4-来一个复杂点的程序" class="headerlink" title="4.来一个复杂点的程序"></a>4.来一个复杂点的程序</h3><p>我们不可能一直都只用Arduino来点亮LED灯吧，接下来介绍Arduino IO口都使用</p>
+<p>我们来实现一个小车最简单的点击驱动（请先正确安装好Arduino小车，这有手就行吧）</p>
+<p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h6c6mrh73jj21hc0u0qcn.jpg" alt="IMG_0772 2"></p>
+<p>让我们一句一句来撸代码吧</p>
+<p>首先定义各个电机的接口，这个写在程序的最外面，最上面，这相当于声明</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> Left_motor = <span class="number">8</span>;       <span class="comment">//左电机</span></span><br><span class="line"><span class="type">int</span> Left_motor_pwm = <span class="number">9</span>;   <span class="comment">//左电机pwm调速</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> Right_motor_pwm = <span class="number">10</span>; <span class="comment">//右电机pwm调速</span></span><br><span class="line"><span class="type">int</span> Right_motor = <span class="number">11</span>;     <span class="comment">//右电机</span></span><br></pre></td></tr></table></figure>
+
+<p>我们在驱动电机时，pwm是用来调节转速的</p>
+<p>接着在setup里初始化各个IO口的输出</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">setup</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">pinMode</span>(Left_motor,OUTPUT); <span class="comment">// PIN 8 打开（无pwm功能）</span></span><br><span class="line">  <span class="built_in">pinMode</span>(Left_motor_pwm,OUTPUT); <span class="comment">// PIN 9 (PWM)</span></span><br><span class="line">  <span class="built_in">pinMode</span>(Right_motor_pwm,OUTPUT);<span class="comment">// PIN 10 (PWM) </span></span><br><span class="line">  <span class="built_in">pinMode</span>(Right_motor,OUTPUT);<span class="comment">// PIN 11 (PWM)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着就是写小车前进的代码了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">run</span><span class="params">(<span class="type">int</span> time)</span> <span class="comment">// 前进</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">digitalWrite</span>(Right_motor, LOW);      <span class="comment">// 右电机前进</span></span><br><span class="line">    <span class="built_in">digitalWrite</span>(Right_motor_pwm, HIGH); <span class="comment">// 右电机前进</span></span><br><span class="line">    <span class="built_in">analogWrite</span>(Right_motor_pwm, <span class="number">150</span>);   <span class="comment">// PWM比例0~255调速，左右轮差异略增减</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">digitalWrite</span>(Left_motor, LOW);      <span class="comment">// 左电机前进</span></span><br><span class="line">    <span class="built_in">digitalWrite</span>(Left_motor_pwm, HIGH); <span class="comment">//左电机PWM</span></span><br><span class="line">    <span class="built_in">analogWrite</span>(Left_motor_pwm, <span class="number">150</span>);   <span class="comment">// PWM比例0~255调速，左右轮差异略增减</span></span><br><span class="line">    <span class="built_in">delay</span>(time * <span class="number">100</span>);                  <span class="comment">//执行时间，可以调整</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>其中因为左右电机的pwm不一定相同，建议放在地上跑过再进行微调，最好是买一个万用表测量精准电压（如果你不想你的板子烧掉的话）</p>
+<p>好了，所有的代码已经介绍完毕，下面就是完整代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> Left_motor = <span class="number">8</span>;       <span class="comment">//左电机</span></span><br><span class="line"><span class="type">int</span> Left_motor_pwm = <span class="number">9</span>;   <span class="comment">//左电机pwm调速</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> Right_motor_pwm = <span class="number">10</span>; <span class="comment">//右电机pwm调速</span></span><br><span class="line"><span class="type">int</span> Right_motor = <span class="number">11</span>;     <span class="comment">//右电机</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">setup</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//初始化电机驱动IO为输出方式</span></span><br><span class="line">  <span class="built_in">pinMode</span>(Left_motor,OUTPUT); <span class="comment">// PIN 8 8脚无PWM功能</span></span><br><span class="line">  <span class="built_in">pinMode</span>(Left_motor_pwm,OUTPUT); <span class="comment">// PIN 9 (PWM)</span></span><br><span class="line">  <span class="built_in">pinMode</span>(Right_motor_pwm,OUTPUT);<span class="comment">// PIN 10 (PWM) </span></span><br><span class="line">  <span class="built_in">pinMode</span>(Right_motor,OUTPUT);<span class="comment">// PIN 11 (PWM)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">run</span><span class="params">(<span class="type">int</span> time)</span> <span class="comment">// 前进</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">digitalWrite</span>(Right_motor, LOW);      <span class="comment">// 右电机前进</span></span><br><span class="line">    <span class="built_in">digitalWrite</span>(Right_motor_pwm, HIGH); <span class="comment">// 右电机前进</span></span><br><span class="line">    <span class="built_in">analogWrite</span>(Right_motor_pwm, <span class="number">150</span>);   <span class="comment">// PWM比例0~255调速，左右轮差异略增减</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">digitalWrite</span>(Left_motor, LOW);      <span class="comment">// 左电机前进</span></span><br><span class="line">    <span class="built_in">digitalWrite</span>(Left_motor_pwm, HIGH); <span class="comment">//左电机PWM</span></span><br><span class="line">    <span class="built_in">analogWrite</span>(Left_motor_pwm, <span class="number">150</span>);   <span class="comment">// PWM比例0~255调速，左右轮差异略增减</span></span><br><span class="line">    <span class="built_in">delay</span>(time * <span class="number">100</span>);                  <span class="comment">//执行时间，可以调整</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">loop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">delay</span>(<span class="number">500</span>);</span><br><span class="line">  <span class="built_in">run</span>(<span class="number">10</span>); 	<span class="comment">//前进</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-烧录注意"><a href="#5-烧录注意" class="headerlink" title="5.烧录注意"></a>5.烧录注意</h3><p>这里特别特别注意，当你烧录程序的时候千万要把连电机的那块板子（上层板）撤了再烧录，不然会疯狂报错，别问，问就是我的板子差点就炸了:(</p>
+<h5 id="当你学会了前进代码以后，后退左右都是对电机值的修改，希望各位调车成功"><a href="#当你学会了前进代码以后，后退左右都是对电机值的修改，希望各位调车成功" class="headerlink" title="当你学会了前进代码以后，后退左右都是对电机值的修改，希望各位调车成功"></a>当你学会了前进代码以后，后退左右都是对电机值的修改，希望各位调车成功</h5><h2 id="お疲れ様でした"><a href="#お疲れ様でした" class="headerlink" title="お疲れ様でした"></a><strong>お疲れ様でした</strong></h2><p>​                                                                                                       编辑者：Ice Man</p>
 
       
 
@@ -294,7 +290,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/09/19/%E5%9F%BA%E4%BA%8EArduino%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6%E5%BC%80%E5%8F%91/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/09/19/Arduino%E5%BC%80%E5%8F%91%E5%88%9D%E8%AF%86/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -308,18 +304,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/09/19/Arduino%E5%BC%80%E5%8F%91%E5%88%9D%E8%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Arduino开发初识
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/09/06/%E5%9F%BA%E4%BA%8EMac%20OS%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA51%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/%E5%9F%BA%E4%BA%8EMac%20OS%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA51%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+    <a href="/2022/09/19/%E5%9F%BA%E4%BA%8EArduino%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6%E5%BC%80%E5%8F%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基于Arduino的智能小车开发</div>
       <i class="icon-circle-right"></i>
     </a>
   
