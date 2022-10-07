@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>Archives: 2022/10 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/archives/2022/10/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Ice Man">
@@ -153,548 +153,47 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-神经网络基础学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/10/07/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">神经网络学习（1）</a>
-    </h1>
-  
-
-        
-        <a href="/2022/10/07/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/10/07/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
   	<time datetime="2022-10-07T09:43:07.206Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-07</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="神经网络基础学习（1）"><a href="#神经网络基础学习（1）" class="headerlink" title="神经网络基础学习（1）"></a>神经网络基础学习（1）</h1><h2 id="一、NumPy库介绍"><a href="#一、NumPy库介绍" class="headerlink" title="一、NumPy库介绍"></a>一、NumPy库介绍</h2><h4 id="1-导入NumPy库"><a href="#1-导入NumPy库" class="headerlink" title="1.导入NumPy库"></a>1.导入NumPy库</h4><p>​	NumPy库是python的外部库，NumPy库给我们提供了许多高效简单的方法来进行深度学习中对数组和矩阵的操作，首先通过以下代码来引入NumPy库</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
-
-<p>这样我们就讲<strong>numpy</strong>库以<strong>np</strong>的形式导入</p>
-<h4 id="2-NumPy库的基本操作"><a href="#2-NumPy库的基本操作" class="headerlink" title="2.NumPy库的基本操作"></a>2.NumPy库的基本操作</h4><p>首先我们先学会去生成一个numpy数组</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;A = np.array([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(A)</span><br><span class="line">[[<span class="number">1</span> <span class="number">2</span>]</span><br><span class="line"> [<span class="number">3</span> <span class="number">4</span>]]</span><br><span class="line">&gt;&gt;&gt;A.shape</span><br><span class="line">(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">&gt;&gt;&gt;A.dtype</span><br><span class="line">dtype(<span class="string">&#x27;int64&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>这里我们创建一个2*2的矩阵A。另外，我们通过shape函数可以来查看矩阵的形状，矩阵里元素的数据类型可以通过dtype函数来查看，接下来看一下矩阵之间的运算</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;B = np.array([[<span class="number">3</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">6</span>]])</span><br><span class="line">&gt;&gt;&gt;A + B</span><br><span class="line">array([[<span class="number">4</span>, <span class="number">2</span>],</span><br><span class="line">       [<span class="number">3</span>, <span class="number">10</span>]])</span><br><span class="line">&gt;&gt;&gt;A * B</span><br><span class="line">array([[<span class="number">3</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">0</span>, <span class="number">24</span>]])</span><br></pre></td></tr></table></figure>
-
-<p>和数组的算术运算相同，矩阵的算术运算也可以在相同形状的矩阵间以对应元素的方式进行，更重要的是，numpy矩阵可以通过<strong>广播</strong>的形式来进行单一数值对矩阵的算术运算，如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(A)</span><br><span class="line">[[<span class="number">1</span> <span class="number">2</span>]</span><br><span class="line"> [<span class="number">3</span> <span class="number">4</span>]]</span><br><span class="line">&gt;&gt;&gt;A * <span class="number">10</span></span><br><span class="line">array([[<span class="number">10</span>, <span class="number">20</span>],</span><br><span class="line">       [<span class="number">30</span>, <span class="number">40</span>]])</span><br></pre></td></tr></table></figure>
-
-<p>至此，关于nump库最简单的函数介绍完毕，另外一些函数下面碰见的时候会接着介绍</p>
-<h2 id="二、感知机"><a href="#二、感知机" class="headerlink" title="二、感知机"></a>二、感知机</h2><h4 id="1-感知机is-what"><a href="#1-感知机is-what" class="headerlink" title="1.感知机is what?"></a>1.感知机is what?</h4><p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x0o1p399j30jo0ewt9d.jpg" alt="截屏2022-10-07 下午5.28.10"></p>
-<p>​	感知机是个什么玩意？上图就是一个非常简单的接受两个输入信号的**<u>感知机</u><strong>。图中X1与X2是</strong>输入信号<strong>，y是</strong>输出信号<strong>，w1与w2表示</strong>权重<strong>。图中的〇称为”</strong>神经元<strong>“或者“</strong>节点**“。</p>
-<p>感知机中传递信号也是相当明了，直接将输入值<strong>x</strong>乘上权重<strong>w</strong>传送至y，但首先我们得引进“<strong>阀值</strong>”这个概念，感知机中的y输出是只有1&#x2F;0两种取值，所以我们要规定一个界线来判断y输出1还是0，我们通常用<strong>θ</strong>来表示阀值<br>$$<br>y&#x3D;<br>\begin{cases}<br>0 &amp; (w_1x_1+w_2x_2 \le \theta)\<br>1 &amp; (w_1x_1+w_2x_2 \ge \theta)<br>\end{cases}<br>$$</p>
-<h4 id="2-感知机的简单应用"><a href="#2-感知机的简单应用" class="headerlink" title="2.感知机的简单应用"></a>2.感知机的简单应用</h4><p>​	接着，我们用感知机来实现一些简单的应用，例如去完成简单逻辑电路的门电路的功能</p>
-<p>​	在此之前，我们再引入<strong>偏置</strong>的概念，观察下式<br>$$<br>y&#x3D;<br>\begin{cases}<br>0 &amp; (w_1x_1+w_2x_2+b \le 0)\<br>1 &amp; (w_1x_1+w_2x_2+b \ge 0)<br>\end{cases}<br>$$<br>​	（2）式与（1）式相比，只是将（1）式中的<strong>阀值</strong>移动到式子的左边，我们将b称为<strong>偏置</strong>，这一步操作有利于接下来神经网络搭建时函数的定义</p>
-<p>​	OK，我们已经把感知机的基础内容全部介绍完毕，接着我们先来实现与门</p>
-<h5 id="（1）与门"><a href="#（1）与门" class="headerlink" title="（1）与门"></a>（1）与门</h5><p>​	我们在高中就已经学习过只有当所有的输入值满足高电平的时候，输出才是高电平，所以我们理所当然的得到了以下的代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">AND</span>(<span class="params">x1, x2</span>):</span><br><span class="line">    x = np.array([x1, x2])</span><br><span class="line">    w = np.array([<span class="number">0.5</span>, <span class="number">0.5</span>])</span><br><span class="line">    b = -<span class="number">0.7</span></span><br><span class="line">    tmp = np.<span class="built_in">sum</span>(w * x) + b</span><br><span class="line">    <span class="keyword">if</span> tmp &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>​	现在我们来解读以上的代码，其中<em>权重w1与w2都是0.5，偏置是 -0.7</em>（我们可以理解为二极管的导通电压为0.7V），说明只有当上一层的加权和超过0.7，下一层的神经元才能被激活，例如</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;AND(<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"><span class="number">1</span></span><br><span class="line">&gt;&gt;&gt;AND(<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line"><span class="number">0</span></span><br><span class="line">&gt;&gt;&gt;AND(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="（2）与非门-amp-或门"><a href="#（2）与非门-amp-或门" class="headerlink" title="（2）与非门&amp;或门"></a>（2）与非门&amp;或门</h5><p>​	接着我们按照相同的思路来完成与非门、或门的代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 与非门</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">NAND</span>(<span class="params">x1, x2</span>):</span><br><span class="line">    x = np.array([x1, x2])</span><br><span class="line">    w = np.array([-<span class="number">0.5</span>, -<span class="number">0.5</span>])</span><br><span class="line">    b = <span class="number">0.7</span></span><br><span class="line">    tmp = np.<span class="built_in">sum</span>(w * x) + b</span><br><span class="line">    <span class="keyword">if</span> tmp &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或门</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">OR</span>(<span class="params">x1, x2</span>):</span><br><span class="line">    x = np.array([x1, x2])</span><br><span class="line">    w = np.array([<span class="number">0.5</span>, <span class="number">0.5</span>])</span><br><span class="line">    b = -<span class="number">0.2</span></span><br><span class="line">    tmp = np.<span class="built_in">sum</span>(w * x) + b</span><br><span class="line">    <span class="keyword">if</span> tmp &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>​	与非门、与门、或门都是相同的原理，所以我们仅需要改变感知机中的权重与偏置的值</p>
-<h4 id="3-多层感知机（异或门的实现）"><a href="#3-多层感知机（异或门的实现）" class="headerlink" title="3.多层感知机（异或门的实现）"></a>3.多层感知机（异或门的实现）</h4><p>​	上面我们成功实现了几个简单的门电路，但当我们想用单个感知机来实现异或门的功能，就瞬间傻眼了，在这里我们需要多层感知机配合来实现异或门的功能</p>
-<p>​	我们先写出异或门的表达式（下图）</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x2n5buauj31vw0r4n0l.jpg" alt="截屏2022-10-07 下午10.01.22"></p>
-<p>​	根据上图，我们可以通过3个感知机来实现异或门</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 异或门</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">XOR</span>(<span class="params">x1, x2</span>):</span><br><span class="line">    s1 = NAND(x1, x2)</span><br><span class="line">    s2 = OR(x1, x2)</span><br><span class="line">    y = AND(s1, s2)</span><br><span class="line">    <span class="keyword">return</span> y</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、神经网络（从感知机到神经网络）"><a href="#二、神经网络（从感知机到神经网络）" class="headerlink" title="二、神经网络（从感知机到神经网络）"></a>二、神经网络（从感知机到神经网络）</h2><h4 id="1-激活函数"><a href="#1-激活函数" class="headerlink" title="1.激活函数"></a>1.激活函数</h4><p>​	上面我们介绍了什么是感知机，现在我们可以正式踏步进入神经网络的学习，我知道你现在很急，但你先别急，按照传统，我们再引入一个新的概念：<strong>激活函数</strong></p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x2w4h88xj313g0p240o.jpg" alt="截屏2022-10-07 下午10.10.00"></p>
-<p>看上图，我们在感知机的基础上，我们将输出的神经元再进行细分，其中的<strong>a</strong>就表示上一层的加权和，<strong>y</strong>表示向后一层神经层传输的值，而连接a和y的函数我们称为<strong>激活函数</strong><br>$$<br>a&#x3D;w_1x_1+w_2x_2+b \<br>y&#x3D;h(a)<br>$$</p>
-<h4 id="2-sigmoid函数"><a href="#2-sigmoid函数" class="headerlink" title="2.sigmoid函数"></a>2.sigmoid函数</h4><p>​	<strong>sigmoid函数</strong>是一个很常见的激活函数，式子如下<br>$$<br>y&#x3D;\frac{1}{1+e^{-x}}<br>$$<br>​	用python我们可以写成</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sigmoid函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;x = np.array([-<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">2.0</span>])</span><br><span class="line">&gt;&gt;&gt;sigmoid(x)</span><br><span class="line">array([<span class="number">0.26894142</span>, <span class="number">0.73105858</span>, <span class="number">0.88079708</span>])</span><br></pre></td></tr></table></figure>
-
-<p>我们运用Matplotlib库来画出sigmoid函数图像</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x3dglv0zj30zg0s2759.jpg" alt="截屏2022-10-07 下午10.26.55"></p>
-<p>sigmoid函数是一条平滑的曲线，输出会随着输入连续性变化。sigmoid函数的平滑性对神经网络的学习具有重要意义</p>
-<p>对于感知机这种只能输出1&#x2F;0的函数，我们称为<strong>阶跃函数</strong>，sigmoid函数可以返回0.114514, 0.314159, 0.8878……等实数。感知机中流动的是0或1的二元信号，而神经网络中流动的是连续的实数值信号，为了充分发挥多层神经网路的优势，我们在选择激活函数的时候必须使用非线性函数</p>
-<h4 id="3-ReLu函数"><a href="#3-ReLu函数" class="headerlink" title="3.ReLu函数"></a>3.ReLu函数</h4><p>​	介绍完sigmoid函数，我们再来介绍另一个目前使用非常广泛的激活汗水——ReLu函数</p>
-<p>​	ReLu函数在输入大于0时，直接输出该值；在输入小于等于0时，输出0<br>$$<br>y &#x3D;<br>\begin{cases}<br>x &amp; (x &gt; 0) \<br>0 &amp; (x \le 0)<br>\end{cases}<br>$$<br>ReLu函数是一个非常简单的函数，所以在实现的时候也很方便,可以写成下面形式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">relu</span>(<span class="params">x</span>):</span><br><span class="line">  <span class="keyword">return</span> np.maximum(<span class="number">0</span>, x)</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="至此，我们介绍完了有关神经网络的基础函数和概念，下一节会讲到在神经网络中，数据究竟是怎样进行传输和计算"><a href="#至此，我们介绍完了有关神经网络的基础函数和概念，下一节会讲到在神经网络中，数据究竟是怎样进行传输和计算" class="headerlink" title="至此，我们介绍完了有关神经网络的基础函数和概念，下一节会讲到在神经网络中，数据究竟是怎样进行传输和计算"></a>至此，我们介绍完了有关神经网络的基础函数和概念，下一节会讲到在神经网络中，数据究竟是怎样进行传输和计算</h4><p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x3viy1f1g308w074qq7.gif" alt="IMG_1033"></p>
-<h2 id="おめでとうございます"><a href="#おめでとうございます" class="headerlink" title="おめでとうございます"></a><strong>おめでとうございます</strong></h2><p>​                                                                                                       编辑者：Ice Man</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/07/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Arduino开发初识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/19/Arduino%E5%BC%80%E5%8F%91%E5%88%9D%E8%AF%86/">Arduino开发初识</a>
+      <a class="archive-article-title" href="/2022/10/07/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">神经网络学习（1）</a>
     </h1>
   
 
-        
-        <a href="/2022/09/19/Arduino%E5%BC%80%E5%8F%91%E5%88%9D%E8%AF%86/" class="archive-article-date">
-  	<time datetime="2022-09-19T13:15:27.786Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Arduino开发初识"><a href="#Arduino开发初识" class="headerlink" title="Arduino开发初识"></a>Arduino开发初识</h1><p><strong>首先声明：我也只是一个专业性不强的小白，仅是记录一些我所了解的东西，所以所说的并不一定完全正确（卑微）</strong></p>
-<h3 id="1-了解Arduino语言逻辑"><a href="#1-了解Arduino语言逻辑" class="headerlink" title="1.了解Arduino语言逻辑"></a>1.了解Arduino语言逻辑</h3><p>创建一个空的Arduino文件，我们可以看到整一个页面就两行函数： setup()与loop()函数</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h6c5xfbsjbj21a70u0abx.jpg" alt="截屏2022-09-19 下午7.58.18"></p>
-<p>setup函数我理解为初始化定义，即在最开始定义板子的IO口，以及一些端口的设置</p>
-<p>loop函数里放的才是你真正想要Arduino板子完成的任务，并且loop函数里的内容是一直循环下去，在loop函数里你可以调用其他void函数来实现操作</p>
-<p>Arduino是基于C++语言进行开发的，所以这要求你有一定的C++语言基础，但并不会涉及很复杂的语法，所以只需要了解最基本的C++语言即可，例如函数方法调用，判断，循环，定义语句等基础即可</p>
-<h3 id="2-了解Arduino开发板"><a href="#2-了解Arduino开发板" class="headerlink" title="2.了解Arduino开发板"></a>2.了解Arduino开发板</h3><p>以下就是一块Arduino UNO的开发板，Arduino UNO(R3版本) 采用的微处理器是ATmega328. 该版本包括１４个数字输入输出IO,６个模拟输入IO,１６ＭＨＺ的晶体，USB接口，电源接口，烧录头，复位按钮等</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h6c620o6quj20j60d9dim.jpg" alt="v2-fa59cd9d15becb2a3ba02817ec09395b_1440w"></p>
-<p>如果是初学者，并不需要特别清楚的了解Arduino内部的电路构造（其实我也不知道），只要能够运用Arduino上的几个IO口即可</p>
-<h3 id="3-测试一个简单的程序"><a href="#3-测试一个简单的程序" class="headerlink" title="3.测试一个简单的程序"></a>3.测试一个简单的程序</h3><p>接下来就来运行一个最简单的点亮LED灯的代码</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">setup</span><span class="params">()</span> <span class="comment">//初始化设置</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">pinMode</span>(LED_BUILTIN,OUTPUT);  <span class="comment">//设置LED开</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">loop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">digitalWrite</span>(LED_BUILTIN,HIGH); <span class="comment">//让LED灯输出高电平</span></span><br><span class="line">  <span class="built_in">delay</span>(<span class="number">100</span>); <span class="comment">//暂停100ms</span></span><br><span class="line">  <span class="built_in">digitalWrite</span>(LED_BUILTIN,LOW);  <span class="comment">//让LED灯输出低电平</span></span><br><span class="line">  <span class="built_in">delay</span>(<span class="number">100</span>); <span class="comment">//暂停100ms</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <div class="article-info info-on-right">
+          
+          
 
-<p>vscode右上角有两个图标，一个是检验，一个是上传，将代码烧录至Arduino中，我们就得到了一个LED灯闪烁的效果</p>
-<h3 id="4-来一个复杂点的程序"><a href="#4-来一个复杂点的程序" class="headerlink" title="4.来一个复杂点的程序"></a>4.来一个复杂点的程序</h3><p>我们不可能一直都只用Arduino来点亮LED灯吧，接下来介绍Arduino IO口都使用</p>
-<p>我们来实现一个小车最简单的点击驱动（请先正确安装好Arduino小车，这有手就行吧）</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h6c6mrh73jj21hc0u0qcn.jpg" alt="IMG_0772 2"></p>
-<p>让我们一句一句来撸代码吧</p>
-<p>首先定义各个电机的接口，这个写在程序的最外面，最上面，这相当于声明</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> Left_motor = <span class="number">8</span>;       <span class="comment">//左电机</span></span><br><span class="line"><span class="type">int</span> Left_motor_pwm = <span class="number">9</span>;   <span class="comment">//左电机pwm调速</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> Right_motor_pwm = <span class="number">10</span>; <span class="comment">//右电机pwm调速</span></span><br><span class="line"><span class="type">int</span> Right_motor = <span class="number">11</span>;     <span class="comment">//右电机</span></span><br></pre></td></tr></table></figure>
-
-<p>我们在驱动电机时，pwm是用来调节转速的</p>
-<p>接着在setup里初始化各个IO口的输出</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">setup</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">pinMode</span>(Left_motor,OUTPUT); <span class="comment">// PIN 8 打开（无pwm功能）</span></span><br><span class="line">  <span class="built_in">pinMode</span>(Left_motor_pwm,OUTPUT); <span class="comment">// PIN 9 (PWM)</span></span><br><span class="line">  <span class="built_in">pinMode</span>(Right_motor_pwm,OUTPUT);<span class="comment">// PIN 10 (PWM) </span></span><br><span class="line">  <span class="built_in">pinMode</span>(Right_motor,OUTPUT);<span class="comment">// PIN 11 (PWM)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接着就是写小车前进的代码了</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">run</span><span class="params">(<span class="type">int</span> time)</span> <span class="comment">// 前进</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">digitalWrite</span>(Right_motor, LOW);      <span class="comment">// 右电机前进</span></span><br><span class="line">    <span class="built_in">digitalWrite</span>(Right_motor_pwm, HIGH); <span class="comment">// 右电机前进</span></span><br><span class="line">    <span class="built_in">analogWrite</span>(Right_motor_pwm, <span class="number">150</span>);   <span class="comment">// PWM比例0~255调速，左右轮差异略增减</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">digitalWrite</span>(Left_motor, LOW);      <span class="comment">// 左电机前进</span></span><br><span class="line">    <span class="built_in">digitalWrite</span>(Left_motor_pwm, HIGH); <span class="comment">//左电机PWM</span></span><br><span class="line">    <span class="built_in">analogWrite</span>(Left_motor_pwm, <span class="number">150</span>);   <span class="comment">// PWM比例0~255调速，左右轮差异略增减</span></span><br><span class="line">    <span class="built_in">delay</span>(time * <span class="number">100</span>);                  <span class="comment">//执行时间，可以调整</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>其中因为左右电机的pwm不一定相同，建议放在地上跑过再进行微调，最好是买一个万用表测量精准电压（如果你不想你的板子烧掉的话）</p>
-<p>好了，所有的代码已经介绍完毕，下面就是完整代码</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> Left_motor = <span class="number">8</span>;       <span class="comment">//左电机</span></span><br><span class="line"><span class="type">int</span> Left_motor_pwm = <span class="number">9</span>;   <span class="comment">//左电机pwm调速</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> Right_motor_pwm = <span class="number">10</span>; <span class="comment">//右电机pwm调速</span></span><br><span class="line"><span class="type">int</span> Right_motor = <span class="number">11</span>;     <span class="comment">//右电机</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">setup</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//初始化电机驱动IO为输出方式</span></span><br><span class="line">  <span class="built_in">pinMode</span>(Left_motor,OUTPUT); <span class="comment">// PIN 8 8脚无PWM功能</span></span><br><span class="line">  <span class="built_in">pinMode</span>(Left_motor_pwm,OUTPUT); <span class="comment">// PIN 9 (PWM)</span></span><br><span class="line">  <span class="built_in">pinMode</span>(Right_motor_pwm,OUTPUT);<span class="comment">// PIN 10 (PWM) </span></span><br><span class="line">  <span class="built_in">pinMode</span>(Right_motor,OUTPUT);<span class="comment">// PIN 11 (PWM)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">run</span><span class="params">(<span class="type">int</span> time)</span> <span class="comment">// 前进</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">digitalWrite</span>(Right_motor, LOW);      <span class="comment">// 右电机前进</span></span><br><span class="line">    <span class="built_in">digitalWrite</span>(Right_motor_pwm, HIGH); <span class="comment">// 右电机前进</span></span><br><span class="line">    <span class="built_in">analogWrite</span>(Right_motor_pwm, <span class="number">150</span>);   <span class="comment">// PWM比例0~255调速，左右轮差异略增减</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">digitalWrite</span>(Left_motor, LOW);      <span class="comment">// 左电机前进</span></span><br><span class="line">    <span class="built_in">digitalWrite</span>(Left_motor_pwm, HIGH); <span class="comment">//左电机PWM</span></span><br><span class="line">    <span class="built_in">analogWrite</span>(Left_motor_pwm, <span class="number">150</span>);   <span class="comment">// PWM比例0~255调速，左右轮差异略增减</span></span><br><span class="line">    <span class="built_in">delay</span>(time * <span class="number">100</span>);                  <span class="comment">//执行时间，可以调整</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">loop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">delay</span>(<span class="number">500</span>);</span><br><span class="line">  <span class="built_in">run</span>(<span class="number">10</span>); 	<span class="comment">//前进</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-烧录注意"><a href="#5-烧录注意" class="headerlink" title="5.烧录注意"></a>5.烧录注意</h3><p>这里特别特别注意，当你烧录程序的时候千万要把连电机的那块板子（上层板）撤了再烧录，不然会疯狂报错，别问，问就是我的板子差点就炸了:(</p>
-<h5 id="当你学会了前进代码以后，后退左右都是对电机值的修改，希望各位调车成功"><a href="#当你学会了前进代码以后，后退左右都是对电机值的修改，希望各位调车成功" class="headerlink" title="当你学会了前进代码以后，后退左右都是对电机值的修改，希望各位调车成功"></a>当你学会了前进代码以后，后退左右都是对电机值的修改，希望各位调车成功</h5><h2 id="お疲れ様でした"><a href="#お疲れ様でした" class="headerlink" title="お疲れ様でした"></a><strong>お疲れ様でした</strong></h2><p>​                                                                                                       编辑者：Ice Man</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/19/Arduino%E5%BC%80%E5%8F%91%E5%88%9D%E8%AF%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-基于Arduino的智能小车开发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/19/%E5%9F%BA%E4%BA%8EArduino%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6%E5%BC%80%E5%8F%91/">基于Arduino的智能小车开发</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/19/%E5%9F%BA%E4%BA%8EArduino%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6%E5%BC%80%E5%8F%91/" class="archive-article-date">
-  	<time datetime="2022-09-19T11:38:19.691Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="基于Arduino的智能小车开发"><a href="#基于Arduino的智能小车开发" class="headerlink" title="基于Arduino的智能小车开发"></a>基于Arduino的智能小车开发</h1><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="一、Arduino介绍"><a href="#一、Arduino介绍" class="headerlink" title="一、Arduino介绍"></a>一、Arduino介绍</h3><p>​	Arduino是一款便捷灵活，方便上手的开源电子原型平台。Arduino电路板学习成本更低，并有专门的网站和IDE支持，对于短期上手的同学来说，会比STM32板好上手很多。搭载Arduino板子的小车也是市面上较为常见的，具有循迹、避障、超声波红外等基础功能，所以适合新手入坑智能车。</p>
-<p>Arduino作为开源的项目，所以网上就有许多不一样的版本，一般国产的板子价格会便宜很多，且功能基本齐全，而官方生产的板子价格较贵，但相关的学习资料会比较丰富，可以根据个人选择选购合适的板子</p>
-<h3 id="二、Mac下Arduino开发环境搭建"><a href="#二、Mac下Arduino开发环境搭建" class="headerlink" title="二、Mac下Arduino开发环境搭建"></a>二、Mac下Arduino开发环境搭建</h3><p>​	本人的电脑是MacBook Pro M1，系统版本为MacOS 12.2.1，入手的开发版是Arduino Uno，以下是开发环境搭建的全过程</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h69hrirm4sj20u0140wlt.jpg" alt="WechatIMG13"></p>
-<h3 id="1-安装驱动"><a href="#1-安装驱动" class="headerlink" title="1.安装驱动"></a>1.安装驱动</h3><p>为了能让电脑识别开发版的借口，需要根据板子的种类来安装相应的驱动</p>
-<p>我选择的是CH34X系列的接口，一般CH341，CH340都可很好的适配</p>
-<p>下载链接为： </p>
-<p>[<a target="_blank" rel="noopener" href="https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver]">https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver]</a>: </p>
-<h3 id="2-安装Arduino-IDE"><a href="#2-安装Arduino-IDE" class="headerlink" title="2.安装Arduino IDE"></a>2.安装Arduino IDE</h3><p>​	Arduino官方就提供了开发Arduino开发板的IDE，并且拥有完整的社区进行学习讨论，<a target="_blank" rel="noopener" href="https://www.arduino.cc/en/software">https://www.arduino.cc/en/software</a></p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h69huuid3kj21fh0u0wk0.jpg" alt="截屏2022-09-17 下午12.34.13"></p>
-<p>选择自己电脑的型号尽心下载，下载完成后IDE界面如下</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c4nrk5pwj20rs14440k.jpg" alt="IMG_70690EACD129-1"></p>
-<h3 id="3-连接Arduino开发板"><a href="#3-连接Arduino开发板" class="headerlink" title="3.连接Arduino开发板"></a>3.连接Arduino开发板</h3><p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c4iui5nij21030u0tca.jpg" alt="截屏2022-09-19 下午6.58.32"></p>
-<p>将你的开发板连接到电脑上，再打开Arduino顶部菜单栏的工具界面，选择自己相应的<strong>开发板</strong>，在选择<strong>端口</strong>，如果连接成功，点击下方<strong>取得开发板信息</strong>就会显示开发板的当前信息。</p>
-<h3 id="4-抛弃Arduino选择拥抱VScode"><a href="#4-抛弃Arduino选择拥抱VScode" class="headerlink" title="4.抛弃Arduino选择拥抱VScode"></a>4.抛弃Arduino选择拥抱VScode</h3><p>前面说到Arduino IDE的开发界面极为简洁，这对开发者并不是很友好，这意味着Arduino并没有自动补全，甚至提示报错的功能，经常会因为一个错误而寻找半天，所以我们选择将Arduino移植到VScode上进行开发（⚠️：前提是你已经安装好了Arduino IDE）</p>
-<p>首先需要设置Arduino，完成下面的勾选</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c4zn63d1j21760u078b.jpg" alt="1ce8d16fbaf04aa896c87cc2d9728046"></p>
-<p>然后再打开vs code界面，选择安装插件，首先需要安装Arduino插件</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c4xopewzj20ja0lumzd.jpg" alt="045a6cac52164430a51c20ca646f5cd4"></p>
-<p>再选择插件的扩展设置<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c5070z8gj20sa0ym42a.jpg" alt="2cd65703d2514886a56bae0459136d70"></p>
-<p>在这里设置自己Arduino的路经，如果是默认则无需填写</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c51mxljxj21au06q3zd.jpg" alt="bb714352bb334b86ac0986c29fb25f4b"></p>
-<p>这样就完成了Arduino在VS code上的设置</p>
-<h3 id="5-在VScode上创建一个新的Arduino文件"><a href="#5-在VScode上创建一个新的Arduino文件" class="headerlink" title="5.在VScode上创建一个新的Arduino文件"></a>5.在VScode上创建一个新的Arduino文件</h3><p>打开一个新的文件夹，按住shift+command+P呼出面板，选择Arduino：Initialize</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c54olhh3j21a70u00v0.jpg" alt="截屏2022-09-19 下午7.30.17"></p>
-<p>再输入自己的文件名，选择自己的开发板<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c56eacgpj21a70u0ac2.jpg" alt="截屏2022-09-19 下午7.32.16"></p>
-<p>这样就大功告成了，现在你就可以在vs code上开心地进行Arduino的开发了<img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h6c59ccngvj21a70u0t8z.jpg" alt="截屏2022-09-19 下午7.33.24"></p>
-<p>最下面的一排参数是你开发版的信息，一般当你开发板正确连接到电脑上时，系统会自动识别连接，当然也可以选择手动选择。</p>
-<h2 id="読んでくれてありがとう"><a href="#読んでくれてありがとう" class="headerlink" title="読んでくれてありがとう"></a><em>読んでくれてありがとう</em></h2><p>​                                                                                                       编辑者：Ice Man</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/19/%E5%9F%BA%E4%BA%8EArduino%E7%9A%84%E6%99%BA%E8%83%BD%E5%B0%8F%E8%BD%A6%E5%BC%80%E5%8F%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-基于Mac OS系统搭建51单片机开发环境/基于Mac OS系统搭建51单片机开发环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="基于Mac-OS系统搭建51单片机开发环境"><a href="#基于Mac-OS系统搭建51单片机开发环境" class="headerlink" title="基于Mac OS系统搭建51单片机开发环境"></a>基于Mac OS系统搭建51单片机开发环境</h1><h4 id=""><a href="#" class="headerlink" title=""></a></h4><h3 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h3><p>  本人是杭电计科学生，参加的智能小车队伍平时需要大量基于单片机的操作，目前使用的是MBP（冤种mac），网上大多又是基于Windows系统等开发方式，查阅了许多文章并结合他人方法总结记录下来，为以后回顾记忆。</p>
-<h2 id="一、安装homebrew"><a href="#一、安装homebrew" class="headerlink" title="一、安装homebrew"></a>一、安装homebrew</h2><p>​	因为后续编译器sdcc得使用brew来安装，所以得先配置好homebrew</p>
-<p>​	国内不用翻墙的下载地址（在Mac终端输入命令行）</p>
-<figure class="highlight plaintext"><figcaption><span>c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、安装编译器sdcc"><a href="#二、安装编译器sdcc" class="headerlink" title="二、安装编译器sdcc"></a>二、安装编译器sdcc</h2><p>​	sdcc可直接通过brew在终端内直接安装	</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install sdcc</span><br></pre></td></tr></table></figure>
-
-<p>　然后在终端中输入来检验</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdcc -version</span><br></pre></td></tr></table></figure>
-
-<p>​	出现以下情况说明安装成功</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5wux6443tj21860c60v1.jpg" alt="截屏2022-09-06 下午2.13.53"></p>
-<h2 id="三、安装CH341驱动"><a href="#三、安装CH341驱动" class="headerlink" title="三、安装CH341驱动"></a>三、安装CH341驱动</h2><p>​	为让开发版上的USB转串口模块成功连接到Mac上，我们需要CH341驱动来为Mac系统驱动</p>
-<p>​	下载地址：<a target="_blank" rel="noopener" href="http://www.wch.cn/download/CH341SER_MAC_ZIP.html">http://www.wch.cn/download/CH341SER_MAC_ZIP.html</a></p>
-<p>​	下载好后将文件解压双击.pkg结尾的文件开始安装，一直点下一步即可完成安装</p>
-<p>​	接下来将单片机连接到Mac上（我使用的是STC89型号的），输入一下命令来检验驱动是否安装成功</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /dev/tty.wchusbser*</span><br></pre></td></tr></table></figure>
-
-<p>​	如果输出一下数据，说明驱动成功</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5wuy2cr5ij218205uwf5.jpg" alt="截屏2022-09-06 下午2.14.53"></p>
-<p>​	注意⚠️：其中140代表串口号</p>
-<h2 id="四、安装烧录程序stcgal"><a href="#四、安装烧录程序stcgal" class="headerlink" title="四、安装烧录程序stcgal"></a>四、安装烧录程序stcgal</h2><p>​	stcgal 是 STC 单片机的下载工具，安装前需确保已提前安装好 python3，因为我的电脑已经安装好了，就不多赘述了。安装完成后再终端输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5wuymzc4uj21880ggq5r.jpg" alt="截屏2022-09-06 下午2.15.24"></p>
-<p>出现以上情况说明安装成功</p>
-<p>下载stcgal地址： <a target="_blank" rel="noopener" href="https://github.com/grigorig/stcgal">https://github.com/grigorig/stcgal</a></p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5wuz0mvgtj21820pmq73.jpg" alt="截屏2022-09-06 下午2.15.49"></p>
-<p>​	直接下载源码，解压文件即可，再在终端中cd命令进入解压文件夹（一直按tab键来补全路经）</p>
-<p>输入以下两行代码即可安装</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./setup.py build</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./setup.py install</span><br></pre></td></tr></table></figure>
-
-<p>​	再输入代码进行检验stcgal版本信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stcgal -version</span><br></pre></td></tr></table></figure>
-
-<p>​	到这里，关于STC单片机在macos上的总体环境已配置完成，开发环境搭建成功！接下来就是进行简单的调试</p>
-<h2 id="五、调试单片机"><a href="#五、调试单片机" class="headerlink" title="五、调试单片机"></a>五、调试单片机</h2><h4 id="1-输入代码"><a href="#1-输入代码" class="headerlink" title="1.输入代码"></a>1.输入代码</h4><h5 id="在编译器上输入以下代码来用数码管点亮SSPAL（编译器我使用的是CLion），将代码以main-c的保存在桌面上"><a href="#在编译器上输入以下代码来用数码管点亮SSPAL（编译器我使用的是CLion），将代码以main-c的保存在桌面上" class="headerlink" title="在编译器上输入以下代码来用数码管点亮SSPAL（编译器我使用的是CLion），将代码以main.c的保存在桌面上"></a>在编译器上输入以下代码来用数码管点亮SSPAL（编译器我使用的是CLion），将代码以main.c的保存在桌面上</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;8051.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> Table[] = &#123;<span class="number">0x6D</span>,<span class="number">0x73</span>,<span class="number">0x77</span>,<span class="number">0x30</span>&#125;; <span class="comment">//对应SPAI四个字母</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Delay</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> x)</span>		<span class="comment">//@11.0592MHz下延迟1ms</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">char</span> i, j;</span><br><span class="line">	<span class="keyword">while</span>(x--)</span><br><span class="line">	&#123;</span><br><span class="line">		i = <span class="number">2</span>;</span><br><span class="line">		j = <span class="number">199</span>;</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span> (--j);</span><br><span class="line">		&#125; <span class="keyword">while</span> (--i);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Turn_ON</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> Location ,<span class="type">unsigned</span> <span class="type">int</span> Num1)</span>  <span class="comment">//点亮</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">switch</span>(Location) <span class="comment">//片选</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:P2_4=<span class="number">1</span>;P2_3=<span class="number">1</span>;P2_2=<span class="number">1</span>;<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:P2_4=<span class="number">1</span>;P2_3=<span class="number">1</span>;P2_2=<span class="number">0</span>;<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:P2_4=<span class="number">1</span>;P2_3=<span class="number">0</span>;P2_2=<span class="number">1</span>;<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:P2_4=<span class="number">1</span>;P2_3=<span class="number">0</span>;P2_2=<span class="number">0</span>;<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:P2_4=<span class="number">0</span>;P2_3=<span class="number">1</span>;P2_2=<span class="number">1</span>;<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">6</span>:P2_4=<span class="number">0</span>;P2_3=<span class="number">1</span>;P2_2=<span class="number">0</span>;<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">7</span>:P2_4=<span class="number">0</span>;P2_3=<span class="number">0</span>;P2_2=<span class="number">1</span>;<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">8</span>:P2_4=<span class="number">0</span>;P2_3=<span class="number">0</span>;P2_2=<span class="number">0</span>;<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	P0=Table[Num1]; <span class="comment">//段选</span></span><br><span class="line">	Delay(<span class="number">1</span>);</span><br><span class="line">	P0=<span class="number">0x00</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span> <span class="comment">//主函数</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		Turn_ON(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">		Turn_ON(<span class="number">2</span>,<span class="number">0</span>);</span><br><span class="line">		Turn_ON(<span class="number">3</span>,<span class="number">1</span>);</span><br><span class="line">		Turn_ON(<span class="number">4</span>,<span class="number">2</span>);</span><br><span class="line">		Turn_ON(<span class="number">5</span>,<span class="number">3</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-使用sdcc进行编译"><a href="#2-使用sdcc进行编译" class="headerlink" title="2.使用sdcc进行编译"></a>2.使用sdcc进行编译</h4><p>​	使用终端进入到代码的所在目录下，输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdcc main.c</span><br></pre></td></tr></table></figure>
-
-<p>​	就可以发现文件夹中多出了一系列文件</p>
-<p>![截屏2022-09-06 下午1.43.24](&#x2F;Users&#x2F;chenjiahan&#x2F;Desktop&#x2F;截屏2022-09-06 下午1.43.24.png)</p>
-<h4 id="3-使用stcgal将代码烧录入单片机中"><a href="#3-使用stcgal将代码烧录入单片机中" class="headerlink" title="3.使用stcgal将代码烧录入单片机中"></a>3.使用stcgal将代码烧录入单片机中</h4><p>​	输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stcgal -P stc89 -p /dev/tty.wchusbserial140</span><br></pre></td></tr></table></figure>
-
-<p>​	-P后参数表示单片机型号，例如我的是STC89，-p后参数表示单片机串口号</p>
-<p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5wuziv2oqj21880qiwi8.jpg" alt="截屏2022-09-06 下午2.16.18"></p>
-<p>​	注意⚠️：在执行stcgal命令，需要给单片机断电再重新接电才能完成写入过程</p>
-<h4 id="4-点亮了单片机上的SSPAL！"><a href="#4-点亮了单片机上的SSPAL！" class="headerlink" title="4.点亮了单片机上的SSPAL！"></a>4.点亮了单片机上的SSPAL！</h4><p><img src="https://tva1.sinaimg.cn/large/e6c9d24ely1h5wv00xov8j20u0140akz.jpg" alt="WechatIMG2"></p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>​	建议别买mac，我总共查阅了三天资料，试用了各种各样的方法，最终才找到了一种可行方案，哎！</p>
-<p>​                                                                                                                                                                       作者：IceMan</p>
-<h3 id="お疲れ様でした"><a href="#お疲れ様でした" class="headerlink" title="お疲れ様でした"></a><strong>お疲れ様でした</strong></h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/06/%E5%9F%BA%E4%BA%8EMac%20OS%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA51%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/%E5%9F%BA%E4%BA%8EMac%20OS%E7%B3%BB%E7%BB%9F%E6%90%AD%E5%BB%BA51%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-my-first-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/05/my-first-blog/">my first blog</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/05/my-first-blog/" class="archive-article-date">
-  	<time datetime="2022-09-05T12:44:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/05/my-first-blog/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/05/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/05/hello-world/" class="archive-article-date">
-  	<time datetime="2022-09-05T12:39:33.724Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/05/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -716,9 +215,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
