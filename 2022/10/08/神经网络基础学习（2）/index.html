@@ -6,31 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>神经网络学习（1） | Hexo</title>
+  <title>神经网络基础学习（2） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="神经网络基础学习（1）一、NumPy库介绍1.导入NumPy库​	NumPy库是python的外部库，NumPy库给我们提供了许多高效简单的方法来进行深度学习中对数组和矩阵的操作，首先通过以下代码来引入NumPy库 1import numpy as np  这样我们就讲numpy库以np的形式导入 2.NumPy库的基本操作首先我们先学会去生成一个numpy数组 12345678&gt;&gt;&amp;">
+  <meta name="description" content="神经网络基础学习（2）在本节中我们将学会最简单的三层神经网络搭建一、矩阵乘法​	在了解神经网络中数据传输方法之前，熟练掌握矩阵乘法的规则是必不可少的（学过线性代数的请自行忽略这一点），下面是两个简单的2*2矩阵间的乘法  ​	矩阵的乘积是通过左边矩阵的行（横向）和右边矩阵的列（纵向）以对应元素的方式相乘而得到的。而且运算的结果保存为新的多维数组的元素，下图详细的表现了矩阵乘法的规则  ​	这个运算">
 <meta property="og:type" content="article">
-<meta property="og:title" content="神经网络学习（1）">
-<meta property="og:url" content="http://example.com/2022/10/07/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="神经网络基础学习（2）">
+<meta property="og:url" content="http://example.com/2022/10/08/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="神经网络基础学习（1）一、NumPy库介绍1.导入NumPy库​	NumPy库是python的外部库，NumPy库给我们提供了许多高效简单的方法来进行深度学习中对数组和矩阵的操作，首先通过以下代码来引入NumPy库 1import numpy as np  这样我们就讲numpy库以np的形式导入 2.NumPy库的基本操作首先我们先学会去生成一个numpy数组 12345678&gt;&gt;&amp;">
+<meta property="og:description" content="神经网络基础学习（2）在本节中我们将学会最简单的三层神经网络搭建一、矩阵乘法​	在了解神经网络中数据传输方法之前，熟练掌握矩阵乘法的规则是必不可少的（学过线性代数的请自行忽略这一点），下面是两个简单的2*2矩阵间的乘法  ​	矩阵的乘积是通过左边矩阵的行（横向）和右边矩阵的列（纵向）以对应元素的方式相乘而得到的。而且运算的结果保存为新的多维数组的元素，下图详细的表现了矩阵乘法的规则  ​	这个运算">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x0o1p399j30jo0ewt9d.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2h8ml8cj30vk04igln.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2lzycakj30v804mwek.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x2n5buauj31vw0r4n0l.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x2w4h88xj313g0p240o.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2my62llj30v004e748.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2ns63qzj30uo046t8k.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x3dglv0zj30zg0s2759.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2oas6a4j30us04iwef.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x3viy1f1g308w074qq7.gif">
-<meta property="article:published_time" content="2022-10-07T09:43:07.206Z">
-<meta property="article:modified_time" content="2022-10-08T10:48:53.532Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y30epomej30m4052aa7.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y3etyz2uj30vo0aw74n.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y40p8ta8j315i0teq70.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y4cb1nz6j313w0t6q7a.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y4hebaqdj30ug03cwed.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y4rplwicj30uy02uglg.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y4xf6sxbj30uw08mq34.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y57f93g3g305a04rt8q.gif">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y6nnk4dfj306m06umxb.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y70j5k2qj30uw04adfq.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y79whiqij305e06dq30.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y7em2ugpj30v404m3yg.jpg">
+<meta property="article:published_time" content="2022-10-08T13:40:44.441Z">
+<meta property="article:modified_time" content="2022-10-08T13:41:30.867Z">
 <meta property="article:author" content="Ice Man">
 <meta property="article:tag" content="Arduino,Java,Python,AI,js">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x0o1p399j30jo0ewt9d.jpg">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y30epomej30m4052aa7.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -166,88 +168,81 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-神经网络基础学习" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-神经网络基础学习（2）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      神经网络学习（1）
+      神经网络基础学习（2）
     </h1>
   
 
         
-        <a href="/2022/10/07/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2022-10-07T09:43:07.206Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-07</time>
+        <a href="/2022/10/08/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2022-10-08T13:40:44.441Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="神经网络基础学习（1）"><a href="#神经网络基础学习（1）" class="headerlink" title="神经网络基础学习（1）"></a>神经网络基础学习（1）</h1><h2 id="一、NumPy库介绍"><a href="#一、NumPy库介绍" class="headerlink" title="一、NumPy库介绍"></a>一、NumPy库介绍</h2><h4 id="1-导入NumPy库"><a href="#1-导入NumPy库" class="headerlink" title="1.导入NumPy库"></a>1.导入NumPy库</h4><p>​	NumPy库是python的外部库，NumPy库给我们提供了许多高效简单的方法来进行深度学习中对数组和矩阵的操作，首先通过以下代码来引入NumPy库</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+        <h1 id="神经网络基础学习（2）"><a href="#神经网络基础学习（2）" class="headerlink" title="神经网络基础学习（2）"></a>神经网络基础学习（2）</h1><h4 id="在本节中我们将学会最简单的三层神经网络搭建"><a href="#在本节中我们将学会最简单的三层神经网络搭建" class="headerlink" title="在本节中我们将学会最简单的三层神经网络搭建"></a>在本节中我们将学会最简单的三层神经网络搭建</h4><h2 id="一、矩阵乘法"><a href="#一、矩阵乘法" class="headerlink" title="一、矩阵乘法"></a>一、矩阵乘法</h2><p>​	在了解神经网络中数据传输方法之前，熟练掌握矩阵乘法的规则是必不可少的（学过线性代数的请自行忽略这一点），下面是两个简单的2*2矩阵间的乘法</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y30epomej30m4052aa7.jpg" alt="截屏2022-10-08 下午6.59.24"></p>
+<p>​	矩阵的乘积是通过左边矩阵的行（横向）和右边矩阵的列（纵向）以对应元素的方式相乘而得到的。而且运算的结果保存为新的多维数组的元素，下图详细的表现了矩阵乘法的规则</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y3etyz2uj30vo0aw74n.jpg" alt="截屏2022-10-08 下午7.13.34"></p>
+<p>​	这个运算在Python中可以用如下代码实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;A = np.array([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line">&gt;&gt;&gt;A.shape</span><br><span class="line">(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">&gt;&gt;&gt;B = np.array([[<span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>]])</span><br><span class="line">&gt;&gt;&gt;B.shape</span><br><span class="line">(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">&gt;&gt;&gt;np.dot(A, B)</span><br><span class="line">array([[<span class="number">19</span>, <span class="number">22</span>],</span><br><span class="line">       [<span class="number">43</span>, <span class="number">50</span>]])</span><br></pre></td></tr></table></figure>
 
-<p>这样我们就讲<strong>numpy</strong>库以<strong>np</strong>的形式导入</p>
-<h4 id="2-NumPy库的基本操作"><a href="#2-NumPy库的基本操作" class="headerlink" title="2.NumPy库的基本操作"></a>2.NumPy库的基本操作</h4><p>首先我们先学会去生成一个numpy数组</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;A = np.array([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]])</span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(A)</span><br><span class="line">[[<span class="number">1</span> <span class="number">2</span>]</span><br><span class="line"> [<span class="number">3</span> <span class="number">4</span>]]</span><br><span class="line">&gt;&gt;&gt;A.shape</span><br><span class="line">(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">&gt;&gt;&gt;A.dtype</span><br><span class="line">dtype(<span class="string">&#x27;int64&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>​	在这里<strong>A</strong>和<strong>B</strong>都是2*2的矩阵，它们的乘积可以通过NumPy的np.dot()函数计算（严谨地来说是点积）。这里要注意的是np.dot(A, B)与np.dot(B, A)的值可能不一样，在矩阵的乘积运算中，矩阵的前后顺序不同会造成乘积结果的不同</p>
+<h2 id="二、搭建简单的三层神经网络"><a href="#二、搭建简单的三层神经网络" class="headerlink" title="二、搭建简单的三层神经网络"></a>二、搭建简单的三层神经网络</h2><h4 id="1-神经网络大体结构"><a href="#1-神经网络大体结构" class="headerlink" title="1.神经网络大体结构"></a>1.神经网络大体结构<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y40p8ta8j315i0teq70.jpg" alt="截屏2022-10-08 下午7.34.26"></h4><p>​	上图就是一个简单的3层神经网络结构图。其中神经网络被分成三个层次：<strong>输入层</strong>、<strong>隐藏层</strong>和<strong>输出层</strong>，我们一般把出入层称为第0层。在代码实现方面，我们可以灵活地运用NumPy多维数组进行组建，用很少的代码完成神经网络的前向处理</p>
+<h4 id="2-各层间的信号传递实现"><a href="#2-各层间的信号传递实现" class="headerlink" title="2.各层间的信号传递实现"></a>2.各层间的信号传递实现</h4><p>​	现在看一下从输出层第一个神经元x1传导到第1层第一层a1的过程</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y4cb1nz6j313w0t6q7a.jpg" alt="截屏2022-10-08 下午7.45.48"></p>
+<p>​	注意，我们在第一层加了一个数值为1的神经元，目的是为了把各个神经元计算所要加的偏置都提取出来，单独把各层权重设置为数值1的权重，这一步操作可以简化我们对神经网络传导函数的书写</p>
+<p>​	现在我们可以把a1的加权信号和写出来</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y4hebaqdj30ug03cwed.jpg" alt="截屏2022-10-08 下午7.50.45"></p>
+<p>​	这是我们第一个神经元的信号加权值，但我们神经网络的传输是以层为单位的，也就是说同一层的神经元的计算是同步进行的，然后这一层所有神经元的信号加权和再往下一层传导，所以我们不可能把每一个神经元的计算公式都写出来，不然就太冗余了，所以我们可以写成下面矩阵乘法的形式</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y4rplwicj30uy02uglg.jpg" alt="截屏2022-10-08 下午8.00.45"></p>
+<p>​	其中，A表示要传递到下一层的信号加权和，X为上一层输入值，W为权重，B为偏置，A、B、X、W如下所示</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y4xf6sxbj30uw08mq34.jpg" alt="截屏2022-10-08 下午8.06.10"></p>
+<p>​	下面我们用NumPy多维数组来实现上面的计算公式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X = np.array([<span class="number">1.0</span>, <span class="number">0.5</span>])</span><br><span class="line">W1 = np.array([[<span class="number">0.1</span>, <span class="number">0.3</span>, <span class="number">0.5</span>], [<span class="number">0.2</span>, <span class="number">0.4</span>, <span class="number">0.6</span>]])</span><br><span class="line">B1 = np.array([<span class="number">0.1</span>, <span class="number">0.2</span>, <span class="number">0.3</span>])</span><br><span class="line"></span><br><span class="line">A1 = np.dot(X, W1) + B1</span><br></pre></td></tr></table></figure>
 
-<p>这里我们创建一个2*2的矩阵A。另外，我们通过shape函数可以来查看矩阵的形状，矩阵里元素的数据类型可以通过dtype函数来查看，接下来看一下矩阵之间的运算</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;B = np.array([[<span class="number">3</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">6</span>]])</span><br><span class="line">&gt;&gt;&gt;A + B</span><br><span class="line">array([[<span class="number">4</span>, <span class="number">2</span>],</span><br><span class="line">       [<span class="number">3</span>, <span class="number">10</span>]])</span><br><span class="line">&gt;&gt;&gt;A * B</span><br><span class="line">array([[<span class="number">3</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">0</span>, <span class="number">24</span>]])</span><br></pre></td></tr></table></figure>
+<p>​	数组中的数值先随意设置，通过这一步函数我们成功的把这一层的信号加权和给算出来了，但这只并没有全部完成，我们上一章还讲到了激活函数这一概念，所以我们还需要激活函数sigmoid来激活数值再传导到下一层</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Z1 = sigmoid(A1)</span><br></pre></td></tr></table></figure>
 
-<p>和数组的算术运算相同，矩阵的算术运算也可以在相同形状的矩阵间以对应元素的方式进行，更重要的是，numpy矩阵可以通过<strong>广播</strong>的形式来进行单一数值对矩阵的算术运算，如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(A)</span><br><span class="line">[[<span class="number">1</span> <span class="number">2</span>]</span><br><span class="line"> [<span class="number">3</span> <span class="number">4</span>]]</span><br><span class="line">&gt;&gt;&gt;A * <span class="number">10</span></span><br><span class="line">array([[<span class="number">10</span>, <span class="number">20</span>],</span><br><span class="line">       [<span class="number">30</span>, <span class="number">40</span>]])</span><br></pre></td></tr></table></figure>
+<p>​	如果看到这里你还能保持大脑清醒并条理清晰，恭喜你，你已经会了神经网络的传输原理了，再往后的损失函数、梯度、正反向反馈等函数都是在此基础上的衍生</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y57f93g3g305a04rt8q.gif" alt="IMG_1056"></p>
+<p>​	好的，我们按照上面第一层的操作，我们同理可以写出第二层和输出层的传递代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">W2 = np.array([[<span class="number">0.1</span>, <span class="number">0.4</span>], [<span class="number">0.2</span>, <span class="number">0.5</span>], [<span class="number">0.3</span>, <span class="number">0.6</span>]])</span><br><span class="line">B2 = np.array([<span class="number">0.1</span>, <span class="number">0.2</span>])</span><br><span class="line"></span><br><span class="line">A2 = np.dot(X, W1) + B1</span><br><span class="line">Z2 = sigmoid(A2)</span><br></pre></td></tr></table></figure>
 
-<p>至此，关于nump库最简单的函数介绍完毕，另外一些函数下面碰见的时候会接着介绍</p>
-<h2 id="二、感知机"><a href="#二、感知机" class="headerlink" title="二、感知机"></a>二、感知机</h2><h4 id="1-感知机is-what"><a href="#1-感知机is-what" class="headerlink" title="1.感知机is what?"></a>1.感知机is what?</h4><p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x0o1p399j30jo0ewt9d.jpg" alt="截屏2022-10-07 下午5.28.10"></p>
-<p>​	感知机是个什么玩意？上图就是一个非常简单的接受两个输入信号的**<u>感知机</u><strong>。图中X1与X2是</strong>输入信号<strong>，y是</strong>输出信号<strong>，w1与w2表示</strong>权重<strong>。图中的〇称为”</strong>神经元<strong>“或者“</strong>节点**“。</p>
-<p>感知机中传递信号也是相当明了，直接将输入值<strong>x</strong>乘上权重<strong>w</strong>传送至y，但首先我们得引进“<strong>阀值</strong>”这个概念，感知机中的y输出是只有1&#x2F;0两种取值，所以我们要规定一个界线来判断y输出1还是0，我们通常用<strong>θ</strong>来表示阀值</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2h8ml8cj30vk04igln.jpg" alt="截屏2022-10-08 下午5.58.35"></p>
-<h4 id="2-感知机的简单应用"><a href="#2-感知机的简单应用" class="headerlink" title="2.感知机的简单应用"></a>2.感知机的简单应用</h4><p>​	接着，我们用感知机来实现一些简单的应用，例如去完成简单逻辑电路的门电路的功能</p>
-<p>​	在此之前，我们再引入<strong>偏置</strong>的概念，观察下式</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2lzycakj30v804mwek.jpg" alt="截屏2022-10-08 下午5.58.23"></p>
-<p>​	（2）式与（1）式相比，只是将（1）式中的<strong>阀值</strong>移动到式子的左边，我们将b称为<strong>偏置</strong>，这一步操作有利于接下来神经网络搭建时函数的定义</p>
-<p>​	OK，我们已经把感知机的基础内容全部介绍完毕，接着我们先来实现与门</p>
-<h5 id="（1）与门"><a href="#（1）与门" class="headerlink" title="（1）与门"></a>（1）与门</h5><p>​	我们在高中就已经学习过只有当所有的输入值满足高电平的时候，输出才是高电平，所以我们理所当然的得到了以下的代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">AND</span>(<span class="params">x1, x2</span>):</span><br><span class="line">    x = np.array([x1, x2])</span><br><span class="line">    w = np.array([<span class="number">0.5</span>, <span class="number">0.5</span>])</span><br><span class="line">    b = -<span class="number">0.7</span></span><br><span class="line">    tmp = np.<span class="built_in">sum</span>(w * x) + b</span><br><span class="line">    <span class="keyword">if</span> tmp &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>​	上面的代码与上面如出一辙，只是在数组的维度上有所变化，我们在神经网络传导的时候一定要搞清楚每一层数组的维数，不然很容易报错</p>
+<p>​	在最后一层输出层的信号传导时，最后的激活函数会有所不同，我们会根据最后数据处理的要求选择不同的函数，我们这里就选择直接返回函数值，后面我们会提到不同的输出层的激活函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">return_function</span>(<span class="params">x</span>):</span><br><span class="line">  <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">A3 = np.dot(Z2, W3) + B3</span><br><span class="line">Y = return_function(A3)			<span class="comment"># Y为最后我们的输出值</span></span><br></pre></td></tr></table></figure>
 
-<p>​	现在我们来解读以上的代码，其中<em>权重w1与w2都是0.5，偏置是 -0.7</em>（我们可以理解为二极管的导通电压为0.7V），说明只有当上一层的加权和超过0.7，下一层的神经元才能被激活，例如</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;AND(<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"><span class="number">1</span></span><br><span class="line">&gt;&gt;&gt;AND(<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line"><span class="number">0</span></span><br><span class="line">&gt;&gt;&gt;AND(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h2 id="三、总结代码"><a href="#三、总结代码" class="headerlink" title="三、总结代码"></a>三、总结代码</h2><p>​	下面我们把上面所有的代码全部定义成函数来实现快速调用的功能</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 搭建3层神经网络（以sigmoid函数为激活函数）</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化各层的权重和偏置</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">init_network</span>():</span><br><span class="line">    network = &#123;&#125;</span><br><span class="line">    network[<span class="string">&#x27;W1&#x27;</span>] = np.array([[<span class="number">0.1</span>, <span class="number">0.3</span>, <span class="number">0.5</span>], [<span class="number">0.2</span>, <span class="number">0.4</span>, <span class="number">0.6</span>]])</span><br><span class="line">    network[<span class="string">&quot;b1&quot;</span>] = np.array([<span class="number">0.1</span>, <span class="number">0.2</span>, <span class="number">0.3</span>])</span><br><span class="line">    network[<span class="string">&quot;W2&quot;</span>] = np.array([[<span class="number">0.1</span>, <span class="number">0.4</span>], [<span class="number">0.2</span>, <span class="number">0.5</span>], [<span class="number">0.3</span>, <span class="number">0.6</span>]])</span><br><span class="line">    network[<span class="string">&quot;b2&quot;</span>] = np.array([<span class="number">0.1</span>, <span class="number">0.2</span>])</span><br><span class="line">    network[<span class="string">&quot;W3&quot;</span>] = np.array([[<span class="number">0.1</span>, <span class="number">0.3</span>], [<span class="number">0.2</span>, <span class="number">0.4</span>]])</span><br><span class="line">    network[<span class="string">&quot;b3&quot;</span>] = np.array([<span class="number">0.1</span>, <span class="number">0.2</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> network</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 隐藏层激活函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 最后一层激活函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">identity_function</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入到输出的传递函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">network, x</span>):</span><br><span class="line">    W1, W2, W3 = network[<span class="string">&quot;W1&quot;</span>], network[<span class="string">&quot;W2&quot;</span>], network[<span class="string">&quot;W3&quot;</span>]</span><br><span class="line">    b1, b2, b3 = network[<span class="string">&quot;b1&quot;</span>], network[<span class="string">&quot;b2&quot;</span>], network[<span class="string">&quot;b3&quot;</span>]</span><br><span class="line"></span><br><span class="line">    a1 = np.dot(x, W1) + b1</span><br><span class="line">    z1 = sigmoid(a1)</span><br><span class="line">    a2 = np.dot(z1, W2) + b2</span><br><span class="line">    z2 = sigmoid(a2)</span><br><span class="line">    a3 = np.dot(z2, W3) + b3</span><br><span class="line">    y = identity_function(a3)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">network = init_network()</span><br><span class="line">x = np.array([<span class="number">1.0</span>, <span class="number">0.5</span>])</span><br><span class="line">y = forward(network, x)</span><br><span class="line"><span class="built_in">print</span>(y)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h5 id="（2）与非门-amp-或门"><a href="#（2）与非门-amp-或门" class="headerlink" title="（2）与非门&amp;或门"></a>（2）与非门&amp;或门</h5><p>​	接着我们按照相同的思路来完成与非门、或门的代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 与非门</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">NAND</span>(<span class="params">x1, x2</span>):</span><br><span class="line">    x = np.array([x1, x2])</span><br><span class="line">    w = np.array([-<span class="number">0.5</span>, -<span class="number">0.5</span>])</span><br><span class="line">    b = <span class="number">0.7</span></span><br><span class="line">    tmp = np.<span class="built_in">sum</span>(w * x) + b</span><br><span class="line">    <span class="keyword">if</span> tmp &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或门</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">OR</span>(<span class="params">x1, x2</span>):</span><br><span class="line">    x = np.array([x1, x2])</span><br><span class="line">    w = np.array([<span class="number">0.5</span>, <span class="number">0.5</span>])</span><br><span class="line">    b = -<span class="number">0.2</span></span><br><span class="line">    tmp = np.<span class="built_in">sum</span>(w * x) + b</span><br><span class="line">    <span class="keyword">if</span> tmp &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>​	在上面的代码里，我们首先定义了<strong>init_function()<strong>，在这个函数中我们创建了一个</strong>network</strong>的字典来储存各个权重和偏置，起到初始化的作用。然后我们还定义了forward()函数，存入了我们上面讲到的传输计算函数，起到了信息向前传输的作用。</p>
+<p>​	到此为止我们已经成功搭建了一个简单的三层神经网络，你懂了吗？</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y6nnk4dfj306m06umxb.jpg" alt="截屏2022-10-08 下午9.06.06"></p>
+<h2 id="四、输出层激活函数设计"><a href="#四、输出层激活函数设计" class="headerlink" title="四、输出层激活函数设计"></a>四、输出层激活函数设计</h2><p>​	我们一般用神经网络来解决<strong>分类问题</strong>和<strong>回归问题</strong>，现在我们来介绍分类问题的激活函数——softmax函数。</p>
+<p>​	分类函数中使用softmax函数可以写成下面的式子</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y70j5k2qj30uw04adfq.jpg" alt="截屏2022-10-08 下午9.18.16"></p>
+<p>​	softmax函数中的分子时输入信号a的指数函数，分母是所有信号的指数函数的和，用Python我们可以写成下面这个样子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">a</span>):</span><br><span class="line">  exp_a = np.exp(a)</span><br><span class="line">  sum_exp_a = np.<span class="built_in">sum</span>(exp_a)</span><br><span class="line">  y = exp_a / sum_exp_a</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> y</span><br></pre></td></tr></table></figure>
 
-<p>​	与非门、与门、或门都是相同的原理，所以我们仅需要改变感知机中的权重与偏置的值</p>
-<h4 id="3-多层感知机（异或门的实现）"><a href="#3-多层感知机（异或门的实现）" class="headerlink" title="3.多层感知机（异或门的实现）"></a>3.多层感知机（异或门的实现）</h4><p>​	上面我们成功实现了几个简单的门电路，但当我们想用单个感知机来实现异或门的功能，就瞬间傻眼了，在这里我们需要多层感知机配合来实现异或门的功能</p>
-<p>​	我们先写出异或门的表达式（下图）</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x2n5buauj31vw0r4n0l.jpg" alt="截屏2022-10-07 下午10.01.22"></p>
-<p>​	根据上图，我们可以通过3个感知机来实现异或门</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 异或门</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">XOR</span>(<span class="params">x1, x2</span>):</span><br><span class="line">    s1 = NAND(x1, x2)</span><br><span class="line">    s2 = OR(x1, x2)</span><br><span class="line">    y = AND(s1, s2)</span><br><span class="line">    <span class="keyword">return</span> y</span><br></pre></td></tr></table></figure>
+<p>​	代码跑出来我们显而易见softmax函数得到的结果都是0.2478……或者0.7865……等小数（0.0到1.0的小数），实际上softmax输出的所有值全部加起来为1，所以我们可以把softmax函数的输出值当作该数据在数据集中出现的概率，所以我们可以把softmax函数当作分类函数的激活函数</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y79whiqij305e06dq30.jpg" alt="IMG_1030"></p>
+<p>​	但我们在这里要提到softmax函数有一个非常重要的注意点</p>
+<p>​	softmax中用到了指数函数，很容易造成数值过大而溢出的现象，所以我们可以对上面的式子进行一点点修改（证明过程省略）</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y7em2ugpj30v404m3yg.jpg" alt="截屏2022-10-08 下午9.31.54"></p>
+<p>​	所以我们也对代码进行小小的修改</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">a</span>):</span><br><span class="line">  c = np.<span class="built_in">max</span>(a)</span><br><span class="line">  exp_a = np.exp(a - c)</span><br><span class="line">  sum_exp_a = np.<span class="built_in">sum</span>(exp_a)</span><br><span class="line">  y = exp_a / sum_exp_a</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> y</span><br></pre></td></tr></table></figure>
 
-<h2 id="二、神经网络（从感知机到神经网络）"><a href="#二、神经网络（从感知机到神经网络）" class="headerlink" title="二、神经网络（从感知机到神经网络）"></a>二、神经网络（从感知机到神经网络）</h2><h4 id="1-激活函数"><a href="#1-激活函数" class="headerlink" title="1.激活函数"></a>1.激活函数</h4><p>​	上面我们介绍了什么是感知机，现在我们可以正式踏步进入神经网络的学习，我知道你现在很急，但你先别急，按照传统，我们再引入一个新的概念：<strong>激活函数</strong></p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x2w4h88xj313g0p240o.jpg" alt="截屏2022-10-07 下午10.10.00"></p>
-<p>看上图，我们在感知机的基础上，我们将输出的神经元再进行细分，其中的<strong>a</strong>就表示上一层的加权和，<strong>y</strong>表示向后一层神经层传输的值，而连接a和y的函数我们称为<strong>激活函数</strong></p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2my62llj30v004e748.jpg" alt="截屏2022-10-08 下午5.58.45"></p>
-<h4 id="2-sigmoid函数"><a href="#2-sigmoid函数" class="headerlink" title="2.sigmoid函数"></a>2.sigmoid函数</h4><p>​	<strong>sigmoid函数</strong>是一个很常见的激活函数，式子如下</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2ns63qzj30uo046t8k.jpg" alt="截屏2022-10-08 下午5.58.56"></p>
-<p>​	用python我们可以写成</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sigmoid函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;x = np.array([-<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">2.0</span>])</span><br><span class="line">&gt;&gt;&gt;sigmoid(x)</span><br><span class="line">array([<span class="number">0.26894142</span>, <span class="number">0.73105858</span>, <span class="number">0.88079708</span>])</span><br></pre></td></tr></table></figure>
-
-<p>我们运用Matplotlib库来画出sigmoid函数图像</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x3dglv0zj30zg0s2759.jpg" alt="截屏2022-10-07 下午10.26.55"></p>
-<p>sigmoid函数是一条平滑的曲线，输出会随着输入连续性变化。sigmoid函数的平滑性对神经网络的学习具有重要意义</p>
-<p>对于感知机这种只能输出1&#x2F;0的函数，我们称为<strong>阶跃函数</strong>，sigmoid函数可以返回0.114514, 0.314159, 0.8878……等实数。感知机中流动的是0或1的二元信号，而神经网络中流动的是连续的实数值信号，为了充分发挥多层神经网路的优势，我们在选择激活函数的时候必须使用非线性函数</p>
-<h4 id="3-ReLu函数"><a href="#3-ReLu函数" class="headerlink" title="3.ReLu函数"></a>3.ReLu函数</h4><p>​	介绍完sigmoid函数，我们再来介绍另一个目前使用非常广泛的激活汗水——ReLu函数</p>
-<p>​	ReLu函数在输入大于0时，直接输出该值；在输入小于等于0时，输出0</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2oas6a4j30us04iwef.jpg" alt="截屏2022-10-08 下午5.59.05"></p>
-<p>ReLu函数是一个非常简单的函数，所以在实现的时候也很方便,可以写成下面形式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">relu</span>(<span class="params">x</span>):</span><br><span class="line">  <span class="keyword">return</span> np.maximum(<span class="number">0</span>, x)</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="至此，我们介绍完了有关神经网络的基础函数和概念，下一节会讲到在神经网络中，数据究竟是怎样进行传输和计算"><a href="#至此，我们介绍完了有关神经网络的基础函数和概念，下一节会讲到在神经网络中，数据究竟是怎样进行传输和计算" class="headerlink" title="至此，我们介绍完了有关神经网络的基础函数和概念，下一节会讲到在神经网络中，数据究竟是怎样进行传输和计算"></a>至此，我们介绍完了有关神经网络的基础函数和概念，下一节会讲到在神经网络中，数据究竟是怎样进行传输和计算</h4><p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x3viy1f1g308w074qq7.gif" alt="IMG_1033"></p>
-<h2 id="おめでとうございます"><a href="#おめでとうございます" class="headerlink" title="おめでとうございます"></a><strong>おめでとうございます</strong></h2><p>​                                                                                                       编辑者：Ice Man</p>
+<p>​	上面我们通过减去输入信号中的最大值（上面的c），这样我们就可以很好的避免溢出的风险了。这里提一句，sigmoid函数也会有同样的风险，解决方法也如出一辙，就不过多赘述了</p>
+<h4 id="OK，现在你已经学会了如何搭建三层神经网络，下面我们会通过“手写数字识别”的项目来具体学习神经网络中的学习"><a href="#OK，现在你已经学会了如何搭建三层神经网络，下面我们会通过“手写数字识别”的项目来具体学习神经网络中的学习" class="headerlink" title="OK，现在你已经学会了如何搭建三层神经网络，下面我们会通过“手写数字识别”的项目来具体学习神经网络中的学习"></a>OK，现在你已经学会了如何搭建三层神经网络，下面我们会通过“手写数字识别”的项目来具体学习神经网络中的学习</h4><h2 id="大好きだよ"><a href="#大好きだよ" class="headerlink" title="大好きだよ"></a>大好きだよ</h2><p> 编辑者：Ice Man</p>
 
       
 
@@ -327,7 +322,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/07/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/10/08/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -341,18 +336,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/10/08/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          神经网络基础学习（2）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/09/19/Arduino%E5%BC%80%E5%8F%91%E5%88%9D%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Arduino开发初识</div>
+    <a href="/2022/10/07/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">神经网络学习（1）</div>
       <i class="icon-circle-right"></i>
     </a>
   
