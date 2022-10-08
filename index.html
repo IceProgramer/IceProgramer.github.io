@@ -189,9 +189,12 @@
 <p>至此，关于nump库最简单的函数介绍完毕，另外一些函数下面碰见的时候会接着介绍</p>
 <h2 id="二、感知机"><a href="#二、感知机" class="headerlink" title="二、感知机"></a>二、感知机</h2><h4 id="1-感知机is-what"><a href="#1-感知机is-what" class="headerlink" title="1.感知机is what?"></a>1.感知机is what?</h4><p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x0o1p399j30jo0ewt9d.jpg" alt="截屏2022-10-07 下午5.28.10"></p>
 <p>​	感知机是个什么玩意？上图就是一个非常简单的接受两个输入信号的**<u>感知机</u><strong>。图中X1与X2是</strong>输入信号<strong>，y是</strong>输出信号<strong>，w1与w2表示</strong>权重<strong>。图中的〇称为”</strong>神经元<strong>“或者“</strong>节点**“。</p>
-<p>感知机中传递信号也是相当明了，直接将输入值<strong>x</strong>乘上权重<strong>w</strong>传送至y，但首先我们得引进“<strong>阀值</strong>”这个概念，感知机中的y输出是只有1&#x2F;0两种取值，所以我们要规定一个界线来判断y输出1还是0，我们通常用<strong>θ</strong>来表示阀值<br>$$<br>y&#x3D;<br>\begin{cases}<br>0 &amp; (w_1x_1+w_2x_2 \le \theta)\<br>1 &amp; (w_1x_1+w_2x_2 \ge \theta)<br>\end{cases}<br>$$</p>
+<p>感知机中传递信号也是相当明了，直接将输入值<strong>x</strong>乘上权重<strong>w</strong>传送至y，但首先我们得引进“<strong>阀值</strong>”这个概念，感知机中的y输出是只有1&#x2F;0两种取值，所以我们要规定一个界线来判断y输出1还是0，我们通常用<strong>θ</strong>来表示阀值</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2h8ml8cj30vk04igln.jpg" alt="截屏2022-10-08 下午5.58.35"></p>
 <h4 id="2-感知机的简单应用"><a href="#2-感知机的简单应用" class="headerlink" title="2.感知机的简单应用"></a>2.感知机的简单应用</h4><p>​	接着，我们用感知机来实现一些简单的应用，例如去完成简单逻辑电路的门电路的功能</p>
-<p>​	在此之前，我们再引入<strong>偏置</strong>的概念，观察下式<br>$$<br>y&#x3D;<br>\begin{cases}<br>0 &amp; (w_1x_1+w_2x_2+b \le 0)\<br>1 &amp; (w_1x_1+w_2x_2+b \ge 0)<br>\end{cases}<br>$$<br>​	（2）式与（1）式相比，只是将（1）式中的<strong>阀值</strong>移动到式子的左边，我们将b称为<strong>偏置</strong>，这一步操作有利于接下来神经网络搭建时函数的定义</p>
+<p>​	在此之前，我们再引入<strong>偏置</strong>的概念，观察下式</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2lzycakj30v804mwek.jpg" alt="截屏2022-10-08 下午5.58.23"></p>
+<p>​	（2）式与（1）式相比，只是将（1）式中的<strong>阀值</strong>移动到式子的左边，我们将b称为<strong>偏置</strong>，这一步操作有利于接下来神经网络搭建时函数的定义</p>
 <p>​	OK，我们已经把感知机的基础内容全部介绍完毕，接着我们先来实现与门</p>
 <h5 id="（1）与门"><a href="#（1）与门" class="headerlink" title="（1）与门"></a>（1）与门</h5><p>​	我们在高中就已经学习过只有当所有的输入值满足高电平的时候，输出才是高电平，所以我们理所当然的得到了以下的代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">AND</span>(<span class="params">x1, x2</span>):</span><br><span class="line">    x = np.array([x1, x2])</span><br><span class="line">    w = np.array([<span class="number">0.5</span>, <span class="number">0.5</span>])</span><br><span class="line">    b = -<span class="number">0.7</span></span><br><span class="line">    tmp = np.<span class="built_in">sum</span>(w * x) + b</span><br><span class="line">    <span class="keyword">if</span> tmp &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
@@ -211,8 +214,11 @@
 
 <h2 id="二、神经网络（从感知机到神经网络）"><a href="#二、神经网络（从感知机到神经网络）" class="headerlink" title="二、神经网络（从感知机到神经网络）"></a>二、神经网络（从感知机到神经网络）</h2><h4 id="1-激活函数"><a href="#1-激活函数" class="headerlink" title="1.激活函数"></a>1.激活函数</h4><p>​	上面我们介绍了什么是感知机，现在我们可以正式踏步进入神经网络的学习，我知道你现在很急，但你先别急，按照传统，我们再引入一个新的概念：<strong>激活函数</strong></p>
 <p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6x2w4h88xj313g0p240o.jpg" alt="截屏2022-10-07 下午10.10.00"></p>
-<p>看上图，我们在感知机的基础上，我们将输出的神经元再进行细分，其中的<strong>a</strong>就表示上一层的加权和，<strong>y</strong>表示向后一层神经层传输的值，而连接a和y的函数我们称为<strong>激活函数</strong><br>$$<br>a&#x3D;w_1x_1+w_2x_2+b \<br>y&#x3D;h(a)<br>$$</p>
-<h4 id="2-sigmoid函数"><a href="#2-sigmoid函数" class="headerlink" title="2.sigmoid函数"></a>2.sigmoid函数</h4><p>​	<strong>sigmoid函数</strong>是一个很常见的激活函数，式子如下<br>$$<br>y&#x3D;\frac{1}{1+e^{-x}}<br>$$<br>​	用python我们可以写成</p>
+<p>看上图，我们在感知机的基础上，我们将输出的神经元再进行细分，其中的<strong>a</strong>就表示上一层的加权和，<strong>y</strong>表示向后一层神经层传输的值，而连接a和y的函数我们称为<strong>激活函数</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2my62llj30v004e748.jpg" alt="截屏2022-10-08 下午5.58.45"></p>
+<h4 id="2-sigmoid函数"><a href="#2-sigmoid函数" class="headerlink" title="2.sigmoid函数"></a>2.sigmoid函数</h4><p>​	<strong>sigmoid函数</strong>是一个很常见的激活函数，式子如下</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2ns63qzj30uo046t8k.jpg" alt="截屏2022-10-08 下午5.58.56"></p>
+<p>​	用python我们可以写成</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sigmoid函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;x = np.array([-<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">2.0</span>])</span><br><span class="line">&gt;&gt;&gt;sigmoid(x)</span><br><span class="line">array([<span class="number">0.26894142</span>, <span class="number">0.73105858</span>, <span class="number">0.88079708</span>])</span><br></pre></td></tr></table></figure>
 
 <p>我们运用Matplotlib库来画出sigmoid函数图像</p>
@@ -220,7 +226,9 @@
 <p>sigmoid函数是一条平滑的曲线，输出会随着输入连续性变化。sigmoid函数的平滑性对神经网络的学习具有重要意义</p>
 <p>对于感知机这种只能输出1&#x2F;0的函数，我们称为<strong>阶跃函数</strong>，sigmoid函数可以返回0.114514, 0.314159, 0.8878……等实数。感知机中流动的是0或1的二元信号，而神经网络中流动的是连续的实数值信号，为了充分发挥多层神经网路的优势，我们在选择激活函数的时候必须使用非线性函数</p>
 <h4 id="3-ReLu函数"><a href="#3-ReLu函数" class="headerlink" title="3.ReLu函数"></a>3.ReLu函数</h4><p>​	介绍完sigmoid函数，我们再来介绍另一个目前使用非常广泛的激活汗水——ReLu函数</p>
-<p>​	ReLu函数在输入大于0时，直接输出该值；在输入小于等于0时，输出0<br>$$<br>y &#x3D;<br>\begin{cases}<br>x &amp; (x &gt; 0) \<br>0 &amp; (x \le 0)<br>\end{cases}<br>$$<br>ReLu函数是一个非常简单的函数，所以在实现的时候也很方便,可以写成下面形式</p>
+<p>​	ReLu函数在输入大于0时，直接输出该值；在输入小于等于0时，输出0</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1h6y2oas6a4j30us04iwef.jpg" alt="截屏2022-10-08 下午5.59.05"></p>
+<p>ReLu函数是一个非常简单的函数，所以在实现的时候也很方便,可以写成下面形式</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">relu</span>(<span class="params">x</span>):</span><br><span class="line">  <span class="keyword">return</span> np.maximum(<span class="number">0</span>, x)</span><br></pre></td></tr></table></figure>
 
 
